@@ -101,10 +101,10 @@ kotlin {
 
 android {
     namespace = "com.ricoh360.thetaclient"
-    compileSdk = 34
+    compileSdk = 35
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 26
+        minSdk = 24
         setProperty("archivesBaseName", "theta-client")
         consumerProguardFiles("proguard-rules.pro")
     }
