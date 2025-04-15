@@ -3,7 +3,7 @@
 [![theta-client CI with Gradle](https://github.com/ricohapi/theta-client/actions/workflows/buildAndTest.yaml/badge.svg)](https://github.com/ricohapi/theta-client/actions/workflows/buildAndTest.yaml)
 [![KDoc](https://img.shields.io/badge/API_reference-KDoc-green.svg)](https://ricohapi.github.io/theta-client/)
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9.10-navy.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.1.10-navy.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 [![Swift](https://img.shields.io/badge/for_Swift-5-FF9900.svg)](https://kotlinlang.org)
 [![Flutter](https://img.shields.io/badge/for_Flutter->=2.5.0-blue.svg)](https://ricohapi.github.io/theta-client/)
 [![React Native](https://img.shields.io/badge/for_React_Native-0.70.8-aqua.svg)](https://ricohapi.github.io/theta-client/)

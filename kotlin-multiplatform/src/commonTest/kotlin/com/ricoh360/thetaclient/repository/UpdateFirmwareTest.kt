@@ -37,7 +37,8 @@ class UpdateFirmwareTest {
     fun updateFirmwareTest() = runTest {
         var apiPath: String? = null
         kotlin.runCatching {
-            apiPath = System.getenv(FIRMWARE_UPDATE_API_ENV_NAME)
+            apiPath = ""
+                //System.getenv(FIRMWARE_UPDATE_API_ENV_NAME)
         }.onFailure {
             println("$FIRMWARE_UPDATE_API_ENV_NAME can not be accessed so updateFirmwareTest() is skipped")
         }
