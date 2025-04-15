@@ -36,7 +36,8 @@ kotlin {
         name = "THETAClient"
         authors = "Ricoh Co, Ltd."
         version = thetaClientVersion
-        source = "{ :http => 'https://github.com/ricohapi/theta-client/releases/download/${thetaClientVersion}/THETAClient.xcframework.zip' }"
+        source =
+            "{ :http => 'https://github.com/ricohapi/theta-client/releases/download/${thetaClientVersion}/THETAClient.xcframework.zip' }"
         license = "MIT"
         ios.deploymentTarget = "14.0"
         framework {
@@ -51,7 +52,7 @@ kotlin {
 
     sourceSets {
         val coroutinesVersion = "1.7.3"
-        val ktorVersion = "2.3.9"
+        val ktorVersion = "3.1.1"
         val kryptoVersion = "4.0.10"
 
         val commonMain by getting {

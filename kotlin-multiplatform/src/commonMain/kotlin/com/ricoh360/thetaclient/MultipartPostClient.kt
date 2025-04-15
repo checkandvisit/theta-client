@@ -21,6 +21,7 @@ import io.ktor.utils.io.charsets.Charsets
 import io.ktor.utils.io.close
 import io.ktor.utils.io.core.String
 import io.ktor.utils.io.core.toByteArray
+import io.ktor.utils.io.readAvailable
 import io.ktor.utils.io.writeFully
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -529,7 +530,12 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
          * @param boundary boundary parameter of Content-Type header
          * @return list of request headers
          */
-        private fun genRequestHeaders(endpoint: String, contentLength: Long, authorization: String?, boundary: String = BOUNDARY): List<Pair<String, String>> {
+        private fun genRequestHeaders(
+            endpoint: String,
+            contentLength: Long,
+            authorization: String?,
+            boundary: String = BOUNDARY
+        ): List<Pair<String, String>> {
             val host = genHostHeaderValue(endpoint) ?: throw BaseHttpClientException("Can not get host header value")
             val headers = mutableListOf(
                 Pair("Host", host),

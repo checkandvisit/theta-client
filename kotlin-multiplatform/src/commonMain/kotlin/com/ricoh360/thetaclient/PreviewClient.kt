@@ -24,6 +24,7 @@ import io.ktor.utils.io.close
 import io.ktor.utils.io.core.String
 import io.ktor.utils.io.core.toByteArray
 import io.ktor.utils.io.discard
+import io.ktor.utils.io.readAvailable
 import io.ktor.utils.io.writeFully
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
@@ -448,7 +449,14 @@ internal class PreviewClientImpl : PreviewClient {
                     responseHeaders?.get(HttpHeaders.WWWAuthenticate.lowercase())?.let { header ->
                         val authHeader = parseAuthorizationHeader(header) as HttpAuthHeader.Parameterized
                         digestAuth.updateAuthHeaderInfo(authHeader)
-                        requestPreview(endpoint, method, path, body, contentType, digestAuth.makeDigestHeader(url.path, HttpMethod.Post.value))
+                        requestPreview(
+                            endpoint,
+                            method,
+                            path,
+                            body,
+                            contentType,
+                            digestAuth.makeDigestHeader(url.path, HttpMethod.Post.value)
+                        )
                     }
                 } ?: client
             }

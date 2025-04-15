@@ -9,10 +9,13 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.logging.SIMPLE
 import io.ktor.client.plugins.websocket.DefaultClientWebSocketSession
 import io.ktor.client.plugins.websocket.WebSockets
+import io.ktor.client.plugins.websocket.pingInterval
 import io.ktor.client.plugins.websocket.webSocketSession
 import io.ktor.websocket.Frame
 import io.ktor.websocket.close
 import io.ktor.websocket.readText
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 internal const val WEBSOCKET_PING_INTERVAL = 2_000L
 
@@ -28,7 +31,7 @@ internal interface WebSocketHttpSession {
 internal class WebSocketHttpClientImpl : WebSocketHttpClient {
     val httpClient = HttpClient(CIO) {
         install(WebSockets) {
-            pingInterval = WEBSOCKET_PING_INTERVAL
+            pingInterval = WEBSOCKET_PING_INTERVAL.toDuration(DurationUnit.MILLISECONDS)
         }
         install(Logging) {
             logger = Logger.SIMPLE // DEFAULT, SIMPLE or EMPTY
