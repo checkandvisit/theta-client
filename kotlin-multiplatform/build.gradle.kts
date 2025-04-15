@@ -14,7 +14,7 @@ plugins {
 }
 
 dependencies {
-    dokkaPlugin("org.jetbrains.dokka:versioning-plugin:2.1.10")
+    dokkaPlugin("org.jetbrains.dokka:versioning-plugin:2.0.0")
 }
 
 val thetaClientVersion = "1.12.1"
