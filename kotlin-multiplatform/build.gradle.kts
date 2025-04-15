@@ -1,5 +1,3 @@
-import org.jetbrains.dokka.versioning.VersioningConfiguration
-import org.jetbrains.dokka.versioning.VersioningPlugin
 import java.util.Properties
 
 plugins {
@@ -7,14 +5,12 @@ plugins {
     kotlin("plugin.serialization") version "2.1.10"
     id("com.android.library")
     id("maven-publish")
-    id("org.jetbrains.dokka") version "2.0.0"
     kotlin("native.cocoapods")
     signing
     id("io.gitlab.arturbosch.detekt").version("1.23.3")
 }
 
 dependencies {
-    dokkaPlugin("org.jetbrains.dokka:versioning-plugin:2.0.0")
 }
 
 val thetaClientVersion = "1.12.1"
@@ -224,29 +220,4 @@ fun getExtraString(name: String): String? {
         return ext[name]?.toString()
     }
     return null
-}
-
-tasks.dokkaHtml.configure {
-    moduleName.set("theta-client")
-
-    if (project.properties["version"].toString() != thetaClientVersion) {
-        throw GradleException("The release version does not match the version defined in Gradle.")
-    }
-
-    val pagesDir = file(project.properties["workspace"].toString()).resolve("gh-pages")
-    val currentVersion = thetaClientVersion
-    val currentDocsDir = pagesDir.resolve("docs")
-    val docVersionsDir = pagesDir.resolve("version")
-    outputDirectory.set(currentDocsDir)
-
-    pluginConfiguration<VersioningPlugin, VersioningConfiguration> {
-        version = currentVersion
-        olderVersionsDir = docVersionsDir
-    }
-
-    doLast {
-        val storedDir = docVersionsDir.resolve(currentVersion)
-        currentDocsDir.copyRecursively(storedDir)
-        storedDir.resolve("older").deleteRecursively()
-    }
 }
