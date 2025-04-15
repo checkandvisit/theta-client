@@ -185,8 +185,6 @@ detekt {
     baseline = file("$rootDir/config/baseline.xml")
     source = files(
         "$rootDir/kotlin-multiplatform/src/commonMain/",
-        "$rootDir/flutter/android/src/",
-        "$rootDir/react-native/android/src/"
     ) // the folders to be checked
 }
 

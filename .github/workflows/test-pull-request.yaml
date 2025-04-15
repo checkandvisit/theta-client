@@ -10,7 +10,3 @@ permissions:
 jobs:
   call-test-kmp:
     uses: ./.github/workflows/test-kmp.yaml
-  call-test-rn:
-    uses: ./.github/workflows/test-rn.yaml
-  call-test-flutter:
-    uses: ./.github/workflows/test-flutter.yaml

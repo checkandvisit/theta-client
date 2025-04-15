@@ -17,8 +17,6 @@ Your app can perform the following actions:
 ## Supported Environments
 * Android native (Kotlin)
 * iOS native (Swift)
-* React Native
-* Flutter
 
 ## Supported Models
 * THETA X
