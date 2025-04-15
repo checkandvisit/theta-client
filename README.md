@@ -5,9 +5,6 @@
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.1.10-navy.svg?style=flat&logo=kotlin)](https://kotlinlang.org)
 [![Swift](https://img.shields.io/badge/for_Swift-5-FF9900.svg)](https://kotlinlang.org)
-[![Flutter](https://img.shields.io/badge/for_Flutter->=2.5.0-blue.svg)](https://ricohapi.github.io/theta-client/)
-[![React Native](https://img.shields.io/badge/for_React_Native-0.70.8-aqua.svg)](https://ricohapi.github.io/theta-client/)
-
 
 This library provides a way to control RICOH THETA using [RICOH THETA API v2.1](https://github.com/ricohapi/theta-api-specs/tree/main/theta-web-api-v2.1).
 Your app can perform the following actions:
