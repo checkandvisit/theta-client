@@ -8,13 +8,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.VideoStitching
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class VideoStitchingTest {
@@ -89,7 +89,7 @@ class VideoStitchingTest {
     fun convertOptionVideoStitchingTest() = runTest {
         val values = listOf(
             Pair(ThetaRepository.VideoStitchingEnum.ONDEVICE, VideoStitching.ONDEVICE),
-            Pair(ThetaRepository.VideoStitchingEnum.NONE, VideoStitching.NONE),
+            Pair(ThetaRepository.VideoStitchingEnum.NONE, VideoStitching.NONE)
         )
 
         values.forEach {

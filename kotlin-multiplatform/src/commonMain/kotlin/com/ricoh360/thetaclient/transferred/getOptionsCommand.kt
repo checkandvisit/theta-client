@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class GetOptionsRequest(
     override val name: String = "camera.getOptions",
-    override val parameters: GetOptionsParams,
+    override val parameters: GetOptionsParams
 ) : CommandApiRequest
 
 /**
@@ -22,7 +22,7 @@ internal data class GetOptionsParams(
     /**
      * option name list to be acquired
      */
-    val optionNames: List<String>,
+    val optionNames: List<String>
 )
 
 /**
@@ -63,7 +63,7 @@ internal data class GetOptionsResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -74,5 +74,5 @@ internal data class ResultGetOptions(
     /**
      * option key value pair
      */
-    val options: Options,
+    val options: Options
 )

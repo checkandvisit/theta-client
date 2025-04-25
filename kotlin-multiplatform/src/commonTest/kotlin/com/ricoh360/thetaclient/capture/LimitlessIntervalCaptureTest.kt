@@ -9,9 +9,9 @@ import com.ricoh360.thetaclient.transferred.CaptureMode
 import io.ktor.client.network.sockets.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 class LimitlessIntervalCaptureTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -82,7 +82,7 @@ class LimitlessIntervalCaptureTest {
                             }
                         }
                     } else {
-                        ""  // Error
+                        "" // Error
                     }
                 }
             }
@@ -157,7 +157,7 @@ class LimitlessIntervalCaptureTest {
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/LimitlessIntervalCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/LimitlessIntervalCapture/start_capture_done.json").readText()
         )
         var counter = 0
         var idleCount = 0
@@ -478,7 +478,7 @@ class LimitlessIntervalCaptureTest {
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/LimitlessIntervalCapture/start_capture_error.json").readText(), // startCapture error
+            Resource("src/commonTest/resources/LimitlessIntervalCapture/start_capture_error.json").readText() // startCapture error
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->
@@ -536,7 +536,7 @@ class LimitlessIntervalCaptureTest {
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            "Status error UnitTest", // status error not json
+            "Status error UnitTest" // status error not json
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->

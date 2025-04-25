@@ -13,9 +13,9 @@ import io.ktor.http.auth.AuthScheme
 import io.ktor.http.auth.HttpAuthHeader
 import io.ktor.http.auth.parseAuthorizationHeader
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ThetaRepositoryClientModeTest {
@@ -59,7 +59,7 @@ class ThetaRepositoryClientModeTest {
             HttpStatusCode.Unauthorized,
             HttpStatusCode.OK,
             HttpStatusCode.Unauthorized,
-            HttpStatusCode.OK,
+            HttpStatusCode.OK
         )
         val realm = "RICOH THETA Z1"
         val qop = "auth"
@@ -72,28 +72,28 @@ class ThetaRepositoryClientModeTest {
                     "realm" to realm,
                     "qop" to qop,
                     "nonce" to nonce,
-                    "algorithm" to "MD5",
-                ),
-            ).render(),
+                    "algorithm" to "MD5"
+                )
+            ).render()
         )
 
         val headerArray = arrayOf(
             wwwAuthHeader,
             null,
             wwwAuthHeader,
-            null,
+            null
         )
         val responseArray = arrayOf(
             "",
             Resource("src/commonTest/resources/info/info_z1.json").readText(),
             "",
-            Resource("src/commonTest/resources/getOptions/get_options_init_z1_done.json").readText(),
+            Resource("src/commonTest/resources/getOptions/get_options_init_z1_done.json").readText()
         )
         val requestPathArray = arrayOf(
             "/osc/info",
             "/osc/info",
             "/osc/commands/execute",
-            "/osc/commands/execute",
+            "/osc/commands/execute"
         )
         var counter = 0
         MockApiClient.onRequest = { request ->
@@ -146,7 +146,7 @@ class ThetaRepositoryClientModeTest {
         // setup
         val statusArray = arrayOf(
             HttpStatusCode.Unauthorized,
-            HttpStatusCode.Unauthorized,
+            HttpStatusCode.Unauthorized
         )
         val realm = "RICOH THETA Z1"
         val qop = "auth"
@@ -159,22 +159,22 @@ class ThetaRepositoryClientModeTest {
                     "realm" to realm,
                     "qop" to qop,
                     "nonce" to nonce,
-                    "algorithm" to "MD5",
-                ),
-            ).render(),
+                    "algorithm" to "MD5"
+                )
+            ).render()
         )
 
         val headerArray = arrayOf(
             wwwAuthHeader,
-            wwwAuthHeader,
+            wwwAuthHeader
         )
         val responseArray = arrayOf(
             "",
-            Resource("src/commonTest/resources/info/info_z1.json").readText(),
+            Resource("src/commonTest/resources/info/info_z1.json").readText()
         )
         val requestPathArray = arrayOf(
             "/osc/info",
-            "/osc/info",
+            "/osc/info"
         )
         var counter = 0
         MockApiClient.onRequest = { request ->
@@ -224,14 +224,14 @@ class ThetaRepositoryClientModeTest {
 
         // setup
         val statusArray = arrayOf(
-            HttpStatusCode.Unauthorized,
+            HttpStatusCode.Unauthorized
         )
 
         val responseArray = arrayOf(
-            "",
+            ""
         )
         val requestPathArray = arrayOf(
-            "/osc/info",
+            "/osc/info"
         )
         var counter = 0
         MockApiClient.onRequest = { request ->
@@ -273,7 +273,7 @@ class ThetaRepositoryClientModeTest {
         // setup
         val statusArray = arrayOf(
             HttpStatusCode.Unauthorized,
-            HttpStatusCode.Unauthorized,
+            HttpStatusCode.Unauthorized
         )
         val realm = "RICOH THETA Z1"
         val qop = "auth"
@@ -286,19 +286,19 @@ class ThetaRepositoryClientModeTest {
                     "realm" to realm,
                     "qop" to qop,
                     "nonce" to nonce,
-                    "algorithm" to "MD5",
-                ),
-            ).render(),
+                    "algorithm" to "MD5"
+                )
+            ).render()
         )
 
         val headerArray = arrayOf(
-            wwwAuthHeader,
+            wwwAuthHeader
         )
         val responseArray = arrayOf(
-            "",
+            ""
         )
         val requestPathArray = arrayOf(
-            "/osc/info",
+            "/osc/info"
         )
         var counter = 0
         MockApiClient.onRequest = { request ->

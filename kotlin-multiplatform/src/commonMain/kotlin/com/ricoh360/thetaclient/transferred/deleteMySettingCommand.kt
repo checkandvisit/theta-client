@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class DeleteMySettingRequest(
     override val name: String = "camera._deleteMySetting",
-    override val parameters: DeleteMySettingParams,
+    override val parameters: DeleteMySettingParams
 ) : CommandApiRequest
 
 /**
@@ -22,7 +22,7 @@ internal data class DeleteMySettingParams(
      * ("image": still image capture mode, "video": video capture)
      * In RICOH THETA S and SC, do not set then it can be acquired for still image.
      */
-    val mode: CaptureMode? = null,
+    val mode: CaptureMode? = null
 )
 
 /**
@@ -63,5 +63,5 @@ internal data class DeleteMySettingResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse

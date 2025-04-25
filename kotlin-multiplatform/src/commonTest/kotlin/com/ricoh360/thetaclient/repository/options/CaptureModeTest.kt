@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class CaptureModeTest {
@@ -83,7 +83,7 @@ class CaptureModeTest {
             Pair(ThetaRepository.CaptureModeEnum.VIDEO, CaptureMode.VIDEO),
             Pair(ThetaRepository.CaptureModeEnum.LIVE_STREAMING, CaptureMode.LIVE_STREAMING),
             Pair(ThetaRepository.CaptureModeEnum.INTERVAL, CaptureMode.INTERVAL),
-            Pair(ThetaRepository.CaptureModeEnum.PRESET, CaptureMode.PRESET),
+            Pair(ThetaRepository.CaptureModeEnum.PRESET, CaptureMode.PRESET)
         )
 
         values.forEach {

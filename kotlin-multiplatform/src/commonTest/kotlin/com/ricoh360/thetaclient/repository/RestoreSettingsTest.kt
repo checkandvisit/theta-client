@@ -9,9 +9,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RestoreSettingsTest {
@@ -47,7 +47,7 @@ class RestoreSettingsTest {
                 0 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
 
@@ -93,7 +93,7 @@ class RestoreSettingsTest {
                 0 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
 
@@ -124,7 +124,7 @@ class RestoreSettingsTest {
     @Test
     fun restoreSettingsOnlyDatetimeTest() = runTest {
         val config = ThetaRepository.Config(
-            dateTime = "2022:11:28 09:33:53+09:00",
+            dateTime = "2022:11:28 09:33:53+09:00"
         )
 
         var counter = 0
@@ -134,7 +134,7 @@ class RestoreSettingsTest {
                 0 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
 
@@ -184,7 +184,7 @@ class RestoreSettingsTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }

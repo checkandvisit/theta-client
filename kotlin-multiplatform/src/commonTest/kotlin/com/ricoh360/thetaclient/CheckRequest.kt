@@ -3,11 +3,11 @@ package com.ricoh360.thetaclient
 import com.ricoh360.thetaclient.transferred.*
 import io.ktor.client.request.*
 import io.ktor.http.content.*
+import kotlin.test.assertEquals
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
-import kotlin.test.assertEquals
 
 @OptIn(ExperimentalSerializationApi::class)
 internal class CheckRequest {
@@ -108,7 +108,7 @@ internal class CheckRequest {
             visibilityReduction: VisibilityReduction? = null,
             whiteBalance: WhiteBalance? = null,
             whiteBalanceAutoStrength: WhiteBalanceAutoStrength? = null,
-            wlanFrequency: WlanFrequency? = null,
+            wlanFrequency: WlanFrequency? = null
         ) {
             assertEquals(request.url.encodedPath, "/osc/commands/execute", "command request path")
 
@@ -163,7 +163,11 @@ internal class CheckRequest {
                 assertEquals(optionsRequest.parameters.options.captureNumber, it, "setOptions captureNumber")
             }
             compositeShootingOutputInterval?.let {
-                assertEquals(optionsRequest.parameters.options._compositeShootingOutputInterval, it, "setOptions compositeShootingOutputInterval")
+                assertEquals(
+                    optionsRequest.parameters.options._compositeShootingOutputInterval,
+                    it,
+                    "setOptions compositeShootingOutputInterval"
+                )
             }
             compositeShootingTime?.let {
                 assertEquals(optionsRequest.parameters.options._compositeShootingTime, it, "setOptions compositeShootingTime")
@@ -193,7 +197,11 @@ internal class CheckRequest {
                 assertEquals(optionsRequest.parameters.options._faceDetect, it, "setOptions _faceDetect")
             }
             filter?.let {
-                assertEquals(optionsRequest.parameters.options._filter, it, "setOptions _filter ${optionsRequest.parameters.options._filter} $it")
+                assertEquals(
+                    optionsRequest.parameters.options._filter,
+                    it,
+                    "setOptions _filter ${optionsRequest.parameters.options._filter} $it"
+                )
             }
             fileFormat?.let {
                 assertEquals(optionsRequest.parameters.options.fileFormat, it, "setOptions fileFormat")

@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class GetPluginLicenseRequest(
     override val name: String = "camera._getPluginLicense",
-    override val parameters: GetPluginLicenseParams,
+    override val parameters: GetPluginLicenseParams
 ) : CommandApiRequest
 
 @Serializable
@@ -16,6 +16,5 @@ internal data class GetPluginLicenseParams(
     /**
      * Package name of the target plugin
      */
-    val packageName: String,
+    val packageName: String
 )
-

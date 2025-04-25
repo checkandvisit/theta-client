@@ -10,14 +10,14 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.WhiteBalance
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AutoBracketTest {
@@ -93,7 +93,7 @@ class AutoBracketTest {
         list.add(
             ThetaRepository.BracketSetting(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             )
         ).add(
             ThetaRepository.BracketSetting(
@@ -102,12 +102,13 @@ class AutoBracketTest {
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 iso = ThetaRepository.IsoEnum.ISO_800,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
             )
         )
 
         val transferred = AutoBracket(
-            2, listOf(
+            2,
+            listOf(
                 BracketParameter(exposureProgram = 2, whiteBalance = WhiteBalance.DAYLIGHT),
                 BracketParameter(
                     aperture = 2.0F,
@@ -119,7 +120,6 @@ class AutoBracketTest {
                 )
             )
         )
-
 
         MockApiClient.onRequest = { request ->
             // check request
@@ -151,7 +151,7 @@ class AutoBracketTest {
             listOf(
                 ThetaRepository.BracketSetting(
                     exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                    whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                    whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                 )
             )
         )
@@ -162,12 +162,13 @@ class AutoBracketTest {
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 iso = ThetaRepository.IsoEnum.ISO_800,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
             )
         )
 
         val transferred = AutoBracket(
-            2, listOf(
+            2,
+            listOf(
                 BracketParameter(exposureProgram = 2, whiteBalance = WhiteBalance.DAYLIGHT),
                 BracketParameter(
                     aperture = 2.0F,
@@ -179,7 +180,6 @@ class AutoBracketTest {
                 )
             )
         )
-
 
         MockApiClient.onRequest = { request ->
             // check request
@@ -211,7 +211,7 @@ class AutoBracketTest {
                 ThetaRepository.BracketSettingList().add(
                     ThetaRepository.BracketSetting(
                         exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                        whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                        whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                     )
                 ).add(
                     ThetaRepository.BracketSetting(
@@ -220,11 +220,12 @@ class AutoBracketTest {
                         exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                         iso = ThetaRepository.IsoEnum.ISO_800,
                         shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                        whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                        whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
                     )
                 ),
                 AutoBracket(
-                    2, listOf(
+                    2,
+                    listOf(
                         BracketParameter(exposureProgram = 2, whiteBalance = WhiteBalance.DAYLIGHT),
                         BracketParameter(
                             aperture = 2.0F,
@@ -232,11 +233,11 @@ class AutoBracketTest {
                             exposureProgram = 1,
                             iso = 800,
                             shutterSpeed = 0.01,
-                            whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT,
+                            whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT
                         )
                     )
-                ),
-            ),
+                )
+            )
         )
 
         values.forEach {
@@ -266,7 +267,7 @@ class AutoBracketTest {
                     listOf(
                         ThetaRepository.BracketSetting(
                             exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                            whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                            whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                         )
                     )
                 ).add(
@@ -276,11 +277,12 @@ class AutoBracketTest {
                         exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                         iso = ThetaRepository.IsoEnum.ISO_800,
                         shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                        whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                        whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
                     )
                 ),
                 AutoBracket(
-                    2, listOf(
+                    2,
+                    listOf(
                         BracketParameter(exposureProgram = 2, whiteBalance = WhiteBalance.DAYLIGHT),
                         BracketParameter(
                             aperture = 2.0F,
@@ -288,11 +290,11 @@ class AutoBracketTest {
                             exposureProgram = 1,
                             iso = 800,
                             shutterSpeed = 0.01,
-                            whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT,
+                            whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT
                         )
                     )
-                ),
-            ),
+                )
+            )
         )
 
         values.forEach {

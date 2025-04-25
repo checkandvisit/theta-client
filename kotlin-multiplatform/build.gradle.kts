@@ -37,7 +37,7 @@ kotlin {
         authors = "Ricoh Co, Ltd."
         version = thetaClientVersion
         source =
-            "{ :http => 'https://github.com/ricohapi/theta-client/releases/download/${thetaClientVersion}/THETAClient.xcframework.zip' }"
+            "{ :http => 'https://github.com/ricohapi/theta-client/releases/download/$thetaClientVersion/THETAClient.xcframework.zip' }"
         license = "MIT"
         ios.deploymentTarget = "14.0"
         framework {
@@ -185,7 +185,7 @@ detekt {
     config.setFrom("$rootDir/config/detekt.yml") // config file
     baseline = file("$rootDir/config/baseline.xml")
     source = files(
-        "$rootDir/kotlin-multiplatform/src/commonMain/",
+        "$rootDir/kotlin-multiplatform/src/commonMain/"
     ) // the folders to be checked
 }
 

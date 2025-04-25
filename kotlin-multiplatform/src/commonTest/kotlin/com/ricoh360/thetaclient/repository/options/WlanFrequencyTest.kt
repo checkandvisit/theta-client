@@ -8,9 +8,9 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.WlanFrequency
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class WlanFrequencyTest {
@@ -81,7 +81,6 @@ class WlanFrequencyTest {
         options.wlanFrequency = value2.first
         thetaRepository.setOptions(options)
         assertTrue(true, "wlanFrequency 2.4GHz")
-
     }
 
     /**
@@ -91,7 +90,7 @@ class WlanFrequencyTest {
     fun convertOptionWlanFrequencyTest() = runTest {
         val values = listOf(
             Pair(ThetaRepository.WlanFrequencyEnum.GHZ_2_4, WlanFrequency.GHZ_2_4),
-            Pair(ThetaRepository.WlanFrequencyEnum.GHZ_5, WlanFrequency.GHZ_5),
+            Pair(ThetaRepository.WlanFrequencyEnum.GHZ_5, WlanFrequency.GHZ_5)
         )
 
         values.forEach {

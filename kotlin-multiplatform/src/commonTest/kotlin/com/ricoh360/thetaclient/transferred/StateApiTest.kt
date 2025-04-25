@@ -1,14 +1,14 @@
 package com.ricoh360.thetaclient.transferred
 
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import kotlin.test.AfterTest
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
 
 @OptIn(ExperimentalSerializationApi::class)
 class StateApiTest {
@@ -38,12 +38,12 @@ class StateApiTest {
             Pair(CaptureStatus.TIME_SHIFT_SHOOTING, "timeShift shooting"),
             Pair(CaptureStatus.CONTINUOUS_SHOOTING, "continuous shooting"),
             Pair(CaptureStatus.RETROSPECTIVE_IMAGE_RECORDING, "retrospective image recording"),
-            Pair(CaptureStatus.BURST_SHOOTING, "burst shooting"),
+            Pair(CaptureStatus.BURST_SHOOTING, "burst shooting")
         )
 
         @Serializable
         data class Dummy(
-            val value: CaptureStatus,
+            val value: CaptureStatus
         )
 
         data.forEach {

@@ -8,9 +8,9 @@ import io.ktor.client.network.sockets.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetThetaInfoTest {
@@ -56,9 +56,13 @@ class GetThetaInfoTest {
         assertTrue(thetaInfo.uptime > 0, "info uptime")
         assertTrue(
             thetaInfo.api == listOf(
-                "/osc/info", "/osc/state", "/osc/checkForUpdates",
-                "/osc/commands/execute", "/osc/commands/status"
-            ), "info api"
+                "/osc/info",
+                "/osc/state",
+                "/osc/checkForUpdates",
+                "/osc/commands/execute",
+                "/osc/commands/status"
+            ),
+            "info api"
         )
         assertTrue(thetaInfo.endpoints == EndPoint(80, 80), "info endpoints")
         assertTrue(thetaInfo.apiLevel == listOf(2), "info apiLevel")
@@ -94,9 +98,13 @@ class GetThetaInfoTest {
         assertTrue(thetaInfo.uptime > 0, "info uptime")
         assertTrue(
             thetaInfo.api == listOf(
-                "/osc/info", "/osc/state", "/osc/checkForUpdates",
-                "/osc/commands/execute", "/osc/commands/status"
-            ), "info api"
+                "/osc/info",
+                "/osc/state",
+                "/osc/checkForUpdates",
+                "/osc/commands/execute",
+                "/osc/commands/status"
+            ),
+            "info api"
         )
         assertTrue(thetaInfo.endpoints == EndPoint(80, 80), "info endpoints")
         assertTrue(thetaInfo.apiLevel == listOf(1, 2), "info apiLevel")
@@ -132,9 +140,13 @@ class GetThetaInfoTest {
         assertTrue(thetaInfo.uptime > 0, "info uptime")
         assertTrue(
             thetaInfo.api == listOf(
-                "/osc/info", "/osc/state", "/osc/checkForUpdates",
-                "/osc/commands/execute", "/osc/commands/status"
-            ), "info api"
+                "/osc/info",
+                "/osc/state",
+                "/osc/checkForUpdates",
+                "/osc/commands/execute",
+                "/osc/commands/status"
+            ),
+            "info api"
         )
         assertTrue(thetaInfo.endpoints == EndPoint(80, 80), "info endpoints")
         assertTrue(thetaInfo.apiLevel == listOf(2), "info apiLevel")
@@ -173,9 +185,13 @@ class GetThetaInfoTest {
         assertTrue(thetaInfo.uptime > 0, "info uptime")
         assertTrue(
             thetaInfo.api == listOf(
-                "/osc/info", "/osc/state", "/osc/checkForUpdates",
-                "/osc/commands/execute", "/osc/commands/status"
-            ), "info api"
+                "/osc/info",
+                "/osc/state",
+                "/osc/checkForUpdates",
+                "/osc/commands/execute",
+                "/osc/commands/status"
+            ),
+            "info api"
         )
         assertTrue(thetaInfo.endpoints == EndPoint(80, 80), "info endpoints")
         assertTrue(thetaInfo.apiLevel == listOf(2), "info apiLevel")
@@ -214,9 +230,13 @@ class GetThetaInfoTest {
         assertTrue(thetaInfo.uptime > 0, "info uptime")
         assertTrue(
             thetaInfo.api == listOf(
-                "/osc/info", "/osc/state", "/osc/checkForUpdates",
-                "/osc/commands/execute", "/osc/commands/status"
-            ), "info api"
+                "/osc/info",
+                "/osc/state",
+                "/osc/checkForUpdates",
+                "/osc/commands/execute",
+                "/osc/commands/status"
+            ),
+            "info api"
         )
         assertTrue(thetaInfo.endpoints == EndPoint(80, 80), "info endpoints")
         assertTrue(thetaInfo.apiLevel == listOf(2), "info apiLevel")
@@ -240,7 +260,7 @@ class GetThetaInfoTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }
@@ -301,7 +321,7 @@ class GetThetaInfoTest {
             ThetaRepository.ThetaModel.THETA_SC2_B,
             ThetaRepository.ThetaModel.THETA_V,
             ThetaRepository.ThetaModel.THETA_Z1,
-            ThetaRepository.ThetaModel.THETA_X,
+            ThetaRepository.ThetaModel.THETA_X
         )
         val modelNameArray = arrayOf(
             "RICOH THETA S",
@@ -310,7 +330,7 @@ class GetThetaInfoTest {
             "RICOH THETA SC2", // SC2 for business
             "RICOH THETA V",
             "RICOH THETA Z1",
-            "RICOH THETA X",
+            "RICOH THETA X"
         )
 
         modelEnumArray.forEachIndexed { index, it ->
@@ -320,11 +340,23 @@ class GetThetaInfoTest {
         modelNameArray.forEachIndexed { index, it ->
             when (index) {
                 // SC2
-                2 -> assertEquals(ThetaRepository.ThetaModel.get(it, "00118200"), modelEnumArray[index], "Name: $it ThetaModel: $modelEnumArray[index].value")
+                2 -> assertEquals(
+                    ThetaRepository.ThetaModel.get(it, "00118200"),
+                    modelEnumArray[index],
+                    "Name: $it ThetaModel: $modelEnumArray[index].value"
+                )
                 // SC2 for business
-                3 -> assertEquals(ThetaRepository.ThetaModel.get(it, "40118200"), modelEnumArray[index], "Name: $it ThetaModel: $modelEnumArray[index].value")
+                3 -> assertEquals(
+                    ThetaRepository.ThetaModel.get(it, "40118200"),
+                    modelEnumArray[index],
+                    "Name: $it ThetaModel: $modelEnumArray[index].value"
+                )
                 // other models
-                else -> assertEquals(ThetaRepository.ThetaModel.get(it), modelEnumArray[index], "Name: $it ThetaModel: $modelEnumArray[index].value")
+                else -> assertEquals(
+                    ThetaRepository.ThetaModel.get(it),
+                    modelEnumArray[index],
+                    "Name: $it ThetaModel: $modelEnumArray[index].value"
+                )
             }
         }
 

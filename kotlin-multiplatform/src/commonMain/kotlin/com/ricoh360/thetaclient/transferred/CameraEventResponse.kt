@@ -8,5 +8,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class CameraEventResponse(
     val options: Options?,
-    val state: CameraState?,
+    val state: CameraState?
 )

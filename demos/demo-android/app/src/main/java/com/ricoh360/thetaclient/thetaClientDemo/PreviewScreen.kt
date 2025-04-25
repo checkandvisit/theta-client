@@ -34,13 +34,12 @@ import timber.log.Timber
  */
 @Composable
 fun PreviewScreen(toPhoto: (photoUrl: String) -> Unit, viewModel: ThetaViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-
     class TakenCallback : PhotoCapture.TakePictureCallback {
         override fun onSuccess(fileUrl: String?) {
             Timber.i("takePicture onSuccess: $fileUrl")
             val scope = CoroutineScope(Job() + Dispatchers.Main)
             when (fileUrl) {
-                null -> {   // Cancel shooting.
+                null -> { // Cancel shooting.
                     viewModel.startPreview()
                 }
 
@@ -80,7 +79,7 @@ fun PreviewScreen(toPhoto: (photoUrl: String) -> Unit, viewModel: ThetaViewModel
                 FloatingActionButton(onClick = {
                     viewModel.takePhoto(TakenCallback())
                 }) {}
-            },
+            }
         ) {
             Column(
                 Modifier.fillMaxSize(),
@@ -101,7 +100,3 @@ fun PreviewScreen(toPhoto: (photoUrl: String) -> Unit, viewModel: ThetaViewModel
         }
     }
 }
-
-
-
-

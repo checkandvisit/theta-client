@@ -9,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-
 internal interface WebSocketClientCallback {
     fun onReceive(message: String?)
     fun onClose()
@@ -24,7 +23,7 @@ internal class WebSocketClient(
     private val scope = CoroutineScope(Dispatchers.Default)
 
     suspend fun start(
-        callback: WebSocketClientCallback,
+        callback: WebSocketClientCallback
     ) {
         session?.let {
             stop()
@@ -32,7 +31,7 @@ internal class WebSocketClient(
 
         try {
             session = httpClient.connect(
-                changeUrlToWebSocket(getApiUrl(endpoint, path)),
+                changeUrlToWebSocket(getApiUrl(endpoint, path))
             )
         } catch (e: Exception) {
             throw ThetaRepository.ThetaWebApiException(
@@ -72,14 +71,14 @@ fun changeUrlToWebSocket(url: String): String {
         fragment = orgUrl.fragment,
         user = orgUrl.user,
         password = orgUrl.password,
-        trailingQuery = orgUrl.trailingQuery,
+        trailingQuery = orgUrl.trailingQuery
     )
     return builder.buildString()
 }
 
 private fun getApiUrl(
     endpoint: String,
-    apiPath: String,
+    apiPath: String
 ): String {
     return if (endpoint.endsWith('/')) {
         endpoint.dropLast(1) + apiPath

@@ -20,7 +20,7 @@ enum class CapturingStatusEnum {
     /**
      * Self-timer in progress
      */
-    SELF_TIMER_COUNTDOWN,
+    SELF_TIMER_COUNTDOWN
 }
 
 /*
@@ -326,7 +326,7 @@ internal suspend fun isCanceledShootingResponse(httpResponse: HttpResponse): Boo
  * @property options option of take a picture
  */
 abstract class PhotoCaptureBase internal constructor(
-    options: Options,
+    options: Options
 ) : Capture(options) {
     /**
      * Get photo file format.
@@ -341,8 +341,7 @@ abstract class PhotoCaptureBase internal constructor(
      * @property endpoint URL of Theta web API endpoint
      * @property cameraModel Camera model info.
      */
-    abstract class Builder<T> internal constructor(
-    ) : Capture.Builder<T>() {
+    abstract class Builder<T> internal constructor() : Capture.Builder<T>() {
         /**
          * Set photo file format.
          *

@@ -7,12 +7,12 @@ import com.ricoh360.thetaclient.MockApiClient
 import com.ricoh360.thetaclient.ThetaRepository
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 class ThetaRepositoryTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -240,7 +240,7 @@ class ThetaRepositoryTest {
                             "dateTimeZone",
                             "offDelay",
                             "sleepDelay",
-                            "_shutterVolume",
+                            "_shutterVolume"
                         )
                     )
                 }
@@ -322,7 +322,7 @@ class ThetaRepositoryTest {
                 2 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
 
@@ -384,7 +384,7 @@ class ThetaRepositoryTest {
                 5 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
 
@@ -446,7 +446,7 @@ class ThetaRepositoryTest {
                 5 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
 
@@ -678,7 +678,7 @@ class ThetaRepositoryTest {
                 2 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        dateTimeZone = config.dateTime,
+                        dateTimeZone = config.dateTime
                     )
                 }
             }
@@ -713,7 +713,7 @@ class ThetaRepositoryTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }
@@ -755,10 +755,14 @@ class ThetaRepositoryTest {
             arrayOf("RICOH THETA Z1", "4444444", ThetaRepository.ThetaModel.THETA_Z1),
             arrayOf("RICOH THETA V", null, ThetaRepository.ThetaModel.THETA_V),
             arrayOf("RICOH THETA S", null, ThetaRepository.ThetaModel.THETA_S),
-            arrayOf("RICOH THETA SC", null, ThetaRepository.ThetaModel.THETA_SC),
+            arrayOf("RICOH THETA SC", null, ThetaRepository.ThetaModel.THETA_SC)
         )
         for (item in data) {
-            assertEquals(ThetaRepository.ThetaModel.get(item[0] as String, item[1] as? String), item[2], (item[2] as? ThetaRepository.ThetaModel)?.name ?: "null")
+            assertEquals(
+                ThetaRepository.ThetaModel.get(item[0] as String, item[1] as? String),
+                item[2],
+                (item[2] as? ThetaRepository.ThetaModel)?.name ?: "null"
+            )
         }
     }
 
@@ -784,7 +788,7 @@ class ThetaRepositoryTest {
             },
             launch {
                 thetaRepository.getThetaInfo()
-            },
+            }
         )
         apiJobsList.joinAll()
     }
@@ -808,7 +812,7 @@ class ThetaRepositoryTest {
         }
 
         val timeout = ThetaRepository.Timeout(
-            requestTimeout = 100L,
+            requestTimeout = 100L
         )
         // test
         val thetaRepository = ThetaRepository(endpoint, null, timeout)
@@ -828,7 +832,7 @@ class ThetaRepositoryTest {
                 } catch (e: ThetaRepository.NotConnectedException) {
                     assertTrue((e.message?.indexOf("time", 0, true) ?: -1) >= 0, "timeout error")
                 }
-            },
+            }
         )
         apiJobsList.joinAll()
     }

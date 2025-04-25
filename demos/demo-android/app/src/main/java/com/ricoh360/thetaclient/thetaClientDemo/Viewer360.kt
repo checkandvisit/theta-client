@@ -26,11 +26,11 @@ import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.http.isSuccess
+import java.io.ByteArrayOutputStream
+import java.util.Base64
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.io.ByteArrayOutputStream
-import java.util.Base64
 
 /**
  * Viewer for equirectangular image
@@ -106,7 +106,7 @@ fun Viewer360Core(photoDataUrl: String) {
 
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
-            Timber.d("page finished: ${url}")
+            Timber.d("page finished: $url")
         }
 
         override fun onReceivedError(
@@ -158,7 +158,6 @@ fun Viewer360Core(photoDataUrl: String) {
         },
         modifier = Modifier.fillMaxSize()
     )
-
 }
 
 /**

@@ -103,7 +103,10 @@ internal object NumbersAsIntsSerializer : KSerializer<List<Int>> {
         val iterator = value.iterator()
         for (index in value.indices) {
             composite.encodeSerializableElement(
-                descriptor, index, intSerializer, iterator.next()
+                descriptor,
+                index,
+                intSerializer,
+                iterator.next()
             )
         }
         composite.endStructure(descriptor)
@@ -159,7 +162,10 @@ internal object NumbersAsLongsSerializer : KSerializer<List<Long>> {
         val iterator = value.iterator()
         for (index in value.indices) {
             composite.encodeSerializableElement(
-                descriptor, index, longSerializer, iterator.next()
+                descriptor,
+                index,
+                longSerializer,
+                iterator.next()
             )
         }
         composite.endStructure(descriptor)
@@ -187,7 +193,7 @@ internal object NumbersAsLongsSerializer : KSerializer<List<Long>> {
 
 internal abstract class EnumIgnoreUnknownSerializer<T : Enum<T>>(
     values: List<T>,
-    private val defaultValue: T,
+    private val defaultValue: T
 ) : KSerializer<T> {
     override val descriptor: SerialDescriptor =
         PrimitiveSerialDescriptor(values.first()::class.qualifiedName!!, PrimitiveKind.STRING)
@@ -216,12 +222,11 @@ internal abstract class EnumIgnoreUnknownSerializer<T : Enum<T>>(
 
 internal abstract class SerialNameEnumIgnoreUnknownSerializer<T>(
     values: List<T>,
-    private val defaultValue: T,
+    private val defaultValue: T
 ) : KSerializer<T>
-        where T : Enum<T>, T : SerialNameEnum
-{
+    where T : Enum<T>, T : SerialNameEnum {
     override val descriptor: SerialDescriptor =
-        PrimitiveSerialDescriptor(values.first()::class.qualifiedName ?: "" , PrimitiveKind.STRING)
+        PrimitiveSerialDescriptor(values.first()::class.qualifiedName ?: "", PrimitiveKind.STRING)
     private val lookup = values.associateBy({ it }, { it.serialName })
     private val revLookup = values.associateBy {
         it.serialName

@@ -10,16 +10,16 @@ import io.ktor.client.network.sockets.ConnectTimeoutException
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.TextContent
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeout
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeout
 
 class ShotCountSpecifiedIntervalCaptureTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -46,7 +46,7 @@ class ShotCountSpecifiedIntervalCaptureTest {
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_done.json").readText()
         )
         val stateSelfTimer =
             Resource("src/commonTest/resources/MultiBracketCapture/state_self_timer.json").readText()
@@ -152,7 +152,7 @@ class ShotCountSpecifiedIntervalCaptureTest {
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_self_timer.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_shooting.json").readText(),
-            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_idle.json").readText(),
+            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_idle.json").readText()
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->
@@ -222,7 +222,7 @@ class ShotCountSpecifiedIntervalCaptureTest {
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_shooting.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_shooting.json").readText(),
-            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_idle.json").readText(),
+            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_idle.json").readText()
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->
@@ -292,10 +292,11 @@ class ShotCountSpecifiedIntervalCaptureTest {
                 } else if (textBody.text.contains("camera.setOptions")) {
                     "src/commonTest/resources/setOptions/set_options_done.json"
                 } else {
-                    if (isStop)
+                    if (isStop) {
                         "src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_done_empty.json"
-                    else
+                    } else {
                         "src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json"
+                    }
                 }
             }
 
@@ -371,7 +372,7 @@ class ShotCountSpecifiedIntervalCaptureTest {
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_cancel.json").readText(),
+            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_cancel.json").readText()
         )
         val stateShooting =
             Resource("src/commonTest/resources/MultiBracketCapture/state_shooting.json").readText()
@@ -436,7 +437,7 @@ class ShotCountSpecifiedIntervalCaptureTest {
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_self_timer.json").readText(),
-            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_idle.json").readText(),
+            Resource("src/commonTest/resources/ShotCountSpecifiedIntervalCapture/state_idle.json").readText()
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->
@@ -591,8 +592,8 @@ class ShotCountSpecifiedIntervalCaptureTest {
             thetaRepository.getShotCountSpecifiedIntervalCaptureBuilder(2).build()
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
-                (e.message?.indexOf("json", 0, true) ?: -1) >= 0
-                        || (e.message?.indexOf("Illegal", 0, true) ?: -1) >= 0,
+                (e.message?.indexOf("json", 0, true) ?: -1) >= 0 ||
+                    (e.message?.indexOf("Illegal", 0, true) ?: -1) >= 0,
                 "setOptions option not json error response"
             )
             exceptionNotJson = true
@@ -875,28 +876,31 @@ class ShotCountSpecifiedIntervalCaptureTest {
         thetaRepository.cameraModel = ThetaRepository.ThetaModel.THETA_X
 
         var capturing =
-            ShotCountSpecifiedIntervalCapturing(endpoint, object : ShotCountSpecifiedIntervalCapture.StartCaptureCallback {
-                override fun onCaptureCompleted(fileUrls: List<String>?) {
-                    assertTrue(false, "capture interval shooting with the shot count specified")
-                    deferred.complete(Unit)
-                }
+            ShotCountSpecifiedIntervalCapturing(
+                endpoint,
+                object : ShotCountSpecifiedIntervalCapture.StartCaptureCallback {
+                    override fun onCaptureCompleted(fileUrls: List<String>?) {
+                        assertTrue(false, "capture interval shooting with the shot count specified")
+                        deferred.complete(Unit)
+                    }
 
-                override fun onProgress(completion: Float) {
-                }
+                    override fun onProgress(completion: Float) {
+                    }
 
-                override fun onCaptureFailed(exception: ThetaRepository.ThetaRepositoryException) {
-                    assertTrue(false, "onCaptureFailed")
-                    deferred.complete(Unit)
-                }
+                    override fun onCaptureFailed(exception: ThetaRepository.ThetaRepositoryException) {
+                        assertTrue(false, "onCaptureFailed")
+                        deferred.complete(Unit)
+                    }
 
-                override fun onStopFailed(exception: ThetaRepository.ThetaRepositoryException) {
-                    assertTrue(
-                        (exception.message?.indexOf("UnitTest", 0, true) ?: -1) >= 0,
-                        "stop capture error response"
-                    )
-                    deferred.complete(Unit)
+                    override fun onStopFailed(exception: ThetaRepository.ThetaRepositoryException) {
+                        assertTrue(
+                            (exception.message?.indexOf("UnitTest", 0, true) ?: -1) >= 0,
+                            "stop capture error response"
+                        )
+                        deferred.complete(Unit)
+                    }
                 }
-            })
+            )
 
         capturing.cancelCapture()
 
@@ -908,28 +912,31 @@ class ShotCountSpecifiedIntervalCaptureTest {
 
         deferred = CompletableDeferred()
         capturing =
-            ShotCountSpecifiedIntervalCapturing(endpoint, object : ShotCountSpecifiedIntervalCapture.StartCaptureCallback {
-                override fun onCaptureCompleted(fileUrls: List<String>?) {
-                    assertTrue(false, "capture interval shooting with the shot count specified")
-                    deferred.complete(Unit)
-                }
+            ShotCountSpecifiedIntervalCapturing(
+                endpoint,
+                object : ShotCountSpecifiedIntervalCapture.StartCaptureCallback {
+                    override fun onCaptureCompleted(fileUrls: List<String>?) {
+                        assertTrue(false, "capture interval shooting with the shot count specified")
+                        deferred.complete(Unit)
+                    }
 
-                override fun onProgress(completion: Float) {
-                }
+                    override fun onProgress(completion: Float) {
+                    }
 
-                override fun onCaptureFailed(exception: ThetaRepository.ThetaRepositoryException) {
-                    assertTrue(false, "onCaptureFailed")
-                    deferred.complete(Unit)
-                }
+                    override fun onCaptureFailed(exception: ThetaRepository.ThetaRepositoryException) {
+                        assertTrue(false, "onCaptureFailed")
+                        deferred.complete(Unit)
+                    }
 
-                override fun onStopFailed(exception: ThetaRepository.ThetaRepositoryException) {
-                    assertTrue(
-                        (exception.message?.length ?: -1) >= 0,
-                        "stop capture json error response"
-                    )
-                    deferred.complete(Unit)
+                    override fun onStopFailed(exception: ThetaRepository.ThetaRepositoryException) {
+                        assertTrue(
+                            (exception.message?.length ?: -1) >= 0,
+                            "stop capture json error response"
+                        )
+                        deferred.complete(Unit)
+                    }
                 }
-            })
+            )
 
         capturing.cancelCapture()
 
@@ -986,7 +993,8 @@ class ShotCountSpecifiedIntervalCaptureTest {
                     )
                     deferred.complete(Unit)
                 }
-            })
+            }
+        )
 
         capturing.cancelCapture()
 
@@ -1019,7 +1027,8 @@ class ShotCountSpecifiedIntervalCaptureTest {
                     )
                     deferred.complete(Unit)
                 }
-            })
+            }
+        )
 
         capturing.cancelCapture()
 
@@ -1052,7 +1061,8 @@ class ShotCountSpecifiedIntervalCaptureTest {
                     )
                     deferred.complete(Unit)
                 }
-            })
+            }
+        )
 
         capturing.cancelCapture()
 

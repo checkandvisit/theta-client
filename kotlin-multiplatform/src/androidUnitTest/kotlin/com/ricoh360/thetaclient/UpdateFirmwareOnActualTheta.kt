@@ -1,10 +1,10 @@
 package com.ricoh360.thetaclient
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import java.nio.file.Files
 import java.nio.file.Paths
 import kotlin.test.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 /**
  * Tests for update firmware with actual Theta.
@@ -23,7 +23,7 @@ class UpdateFirmwareOnActualTheta {
      */
     @Test
     fun updateFirmwareSc2_bTest() = runTest(dispatchTimeoutMs = TIMEOUT) {
-        if(MockApiClient.useMock) {
+        if (MockApiClient.useMock) {
             println("updateFirmwareSc2_bTest(): This test is just for Actual Theta, so skipped")
             return@runTest
         }
@@ -174,45 +174,59 @@ class UpdateFirmwareOnActualTheta {
 
     fun readFile(dir: String, file: String): ByteArray {
         val path = Paths.get(dir, file)
-        if(Files.exists(path)) {
+        if (Files.exists(path)) {
             return Files.readAllBytes(path)
         } else {
-            throw(IllegalArgumentException("Not exist: ${path.toString()}"))
+            throw(IllegalArgumentException("Not exist: $path"))
         }
     }
 
     companion object {
         // Environment variable name that holds the path of Theta firmware update API.
-        const val FIRMWARE_UPDATE_API_ENV_NAME= "to be specified"
+        const val FIRMWARE_UPDATE_API_ENV_NAME = "to be specified"
+
         // Timeout for socket and coroutine
         const val TIMEOUT = 600_000L
+
         // Full path of the directory firmware files exist
         val DIR = "to be specified"
+
         // lastest firmware version of SC2 for business
         const val SC2_B_VERSION_LATEST = "to be specified"
+
         // latest firmware file of SC2 for business
         const val SC2_B_FILE_LATEST = "to be specified"
+
         // previous firmware file of SC2 for business
         const val SC2_B_FILE_PREVIOUS = "to be specified"
+
         // latest firmware version of X
         const val X_VERSION_LATEST = "to be specified"
+
         // latest firmware file of X
         const val X_FILE_LATEST = "to be specified"
+
         // latest firmware version of V
         const val V_VERSION_LATEST = "to be specified"
+
         // latest firmware file of V
         const val V_FILE_LATEST = "to be specified"
 
         // User name of digest authentication is X_USERNAME_PREFIX + X_SERIAL_NUMBER
         const val USERNAME_PREFIX = "THETA"
+
         // Password of digest authentication is the characters from 3rd character of X_SERIAL_NUMBER
         const val PASSWORD_START_POSITION = 2
+
         // Serial number of Theta X. Password is assumed not to be changed.
         const val X_SERIAL_NUMBER = "to be specified"
+
         // IP address in client mode for X.
         const val X_URL_CL = "to be specified"
+
         // Serial number of Theta V. Password is assumed not to be changed.
         const val V_SERIAL_NUMBER = "to be specified"
+
         // IP address in client mode for V
         const val V_URL_CL = "to be specified"
     }

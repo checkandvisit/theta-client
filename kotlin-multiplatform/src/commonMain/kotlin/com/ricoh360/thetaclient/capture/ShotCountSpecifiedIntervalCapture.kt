@@ -144,7 +144,8 @@ class ShotCountSpecifiedIntervalCapture private constructor(
 
     private fun monitorCaptureStatus(callback: StartCaptureCallback) {
         var isCaptured = false
-        val monitor = CaptureStatusMonitor(endpoint,
+        val monitor = CaptureStatusMonitor(
+            endpoint,
             { newStatus, _ ->
                 when (newStatus) {
                     CaptureStatus.IDLE -> {
@@ -167,14 +168,16 @@ class ShotCountSpecifiedIntervalCapture private constructor(
 
                     else -> callback.onCapturing(CapturingStatusEnum.CAPTURING)
                 }
-            }, { e ->
+            },
+            { e ->
                 captureStatusMonitor?.stop()
                 callback.onCaptureFailed(
                     exception = ThetaRepository.NotConnectedException(
                         message = e.message ?: e.toString()
                     )
                 )
-            }, checkStatusCommandInterval
+            },
+            checkStatusCommandInterval
         )
         captureStatusMonitor = monitor
         monitor.start()
@@ -233,7 +236,11 @@ class ShotCountSpecifiedIntervalCapture private constructor(
      * @property endpoint URL of Theta web API endpoint
      * @property cameraModel Camera model info.
      */
-    class Builder internal constructor(private val shotCount: Int, private val endpoint: String, private val cameraModel: ThetaRepository.ThetaModel? = null) :
+    class Builder internal constructor(
+        private val shotCount: Int,
+        private val endpoint: String,
+        private val cameraModel: ThetaRepository.ThetaModel? = null
+    ) :
         Capture.Builder<Builder>() {
         private var interval: Long? = null
 

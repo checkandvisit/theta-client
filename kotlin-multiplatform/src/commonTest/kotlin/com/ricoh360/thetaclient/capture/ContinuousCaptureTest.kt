@@ -9,9 +9,9 @@ import com.ricoh360.thetaclient.transferred.*
 import io.ktor.client.network.sockets.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 class ContinuousCaptureTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -38,7 +38,7 @@ class ContinuousCaptureTest {
             Resource("src/commonTest/resources/ContinuousCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ContinuousCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ContinuousCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/ContinuousCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/ContinuousCapture/start_capture_done.json").readText()
         )
         val stateShootingResponse =
             Resource("src/commonTest/resources/ContinuousCapture/state_shooting.json").readText()
@@ -218,8 +218,8 @@ class ContinuousCaptureTest {
             thetaRepository.getContinuousCaptureBuilder().build()
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
-                (e.message?.indexOf("json", 0, true) ?: -1) >= 0
-                        || (e.message?.indexOf("Illegal", 0, true) ?: -1) >= 0,
+                (e.message?.indexOf("json", 0, true) ?: -1) >= 0 ||
+                    (e.message?.indexOf("Illegal", 0, true) ?: -1) >= 0,
                 "setOptions option not json error response"
             )
             exceptionNotJson = true
@@ -465,7 +465,7 @@ class ContinuousCaptureTest {
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/options/option_continuous_number_20.json").readText(),
+            Resource("src/commonTest/resources/options/option_continuous_number_20.json").readText()
         )
         var counter = 0
         MockApiClient.onRequest = { request ->
@@ -511,7 +511,7 @@ class ContinuousCaptureTest {
             Resource("src/commonTest/resources/ContinuousCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ContinuousCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/ContinuousCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/ContinuousCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/ContinuousCapture/start_capture_done.json").readText()
         )
         val stateSelfTimerResponse =
             Resource("src/commonTest/resources/ContinuousCapture/state_self_timer.json").readText()

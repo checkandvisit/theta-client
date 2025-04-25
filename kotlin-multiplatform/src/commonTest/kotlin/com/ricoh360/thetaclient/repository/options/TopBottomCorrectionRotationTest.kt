@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TopBottomCorrectionRotationTest {
@@ -59,7 +59,10 @@ class TopBottomCorrectionRotationTest {
      */
     @Test
     fun setOptionTest() = runTest {
-        val value = Pair(ThetaRepository.TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f), TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f))
+        val value = Pair(
+            ThetaRepository.TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f),
+            TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f)
+        )
 
         MockApiClient.onRequest = { request ->
             // check request
@@ -81,7 +84,10 @@ class TopBottomCorrectionRotationTest {
     @Test
     fun convertOptionTest() = runTest {
         val values = listOf(
-            Pair(ThetaRepository.TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f), TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f)),
+            Pair(
+                ThetaRepository.TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f),
+                TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f)
+            )
         )
 
         values.forEach {

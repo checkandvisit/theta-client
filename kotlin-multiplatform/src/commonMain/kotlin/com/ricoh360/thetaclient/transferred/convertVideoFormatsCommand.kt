@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class ConvertVideoFormatsRequest(
     override val name: String = "camera._convertVideoFormats",
-    override val parameters: ConvertVideoFormatsParams,
+    override val parameters: ConvertVideoFormatsParams
 ) : CommandApiRequest
 
 /**
@@ -59,7 +59,7 @@ internal data class ConvertVideoFormatsParams(
      *
      * @see TopBottomCorrection
      */
-    val topBottomCorrection: TopBottomCorrection? = null,
+    val topBottomCorrection: TopBottomCorrection? = null
 )
 
 /**
@@ -91,7 +91,7 @@ internal enum class TopBottomCorrection {
      * Top/bottom correction disabled.
      */
     @SerialName("Disapply")
-    DISAPPLY,
+    DISAPPLY
 }
 
 /**
@@ -132,7 +132,7 @@ internal data class ConvertVideoFormatsResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -143,7 +143,7 @@ internal data class ResultConvertVideoFormats(
     /**
      * URL of a converted movie file
      */
-    val fileUrl: String,
+    val fileUrl: String
 )
 
 /**
@@ -165,5 +165,5 @@ internal enum class VideoFormat {
      * RICOH THETA Z1, V, X
      */
     @SerialName("3840x1920")
-    VIDEO_4K,
+    VIDEO_4K
 }

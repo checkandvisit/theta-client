@@ -11,11 +11,11 @@ import com.ricoh360.thetaclient.transferred.MediaType
 import io.ktor.client.network.sockets.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withTimeout
-import kotlin.test.*
 
 class PhotoCaptureTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -433,7 +433,7 @@ class PhotoCaptureTest {
             Pair(ThetaRepository.PhotoFileFormatEnum.IMAGE_6_7K, MediaFileFormat(MediaType.JPEG, 6720, 3360, null, null)),
             Pair(ThetaRepository.PhotoFileFormatEnum.RAW_P_6_7K, MediaFileFormat(MediaType.RAW, 6720, 3360, null, null)),
             Pair(ThetaRepository.PhotoFileFormatEnum.IMAGE_5_5K, MediaFileFormat(MediaType.JPEG, 5504, 2752, null, null)),
-            Pair(ThetaRepository.PhotoFileFormatEnum.IMAGE_11K, MediaFileFormat(MediaType.JPEG, 11008, 5504, null, null)),
+            Pair(ThetaRepository.PhotoFileFormatEnum.IMAGE_11K, MediaFileFormat(MediaType.JPEG, 11008, 5504, null, null))
         )
 
         val responseArray = arrayOf(
@@ -1050,7 +1050,7 @@ class PhotoCaptureTest {
 
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
+            Resource("src/commonTest/resources/setOptions/set_options_done.json").readText()
         )
         var counter = 0
         var valueIndex = 0
@@ -1063,14 +1063,14 @@ class PhotoCaptureTest {
                 0 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        captureMode = CaptureMode.PRESET,
+                        captureMode = CaptureMode.PRESET
                     )
                 }
 
                 1 -> {
                     CheckRequest.checkSetOptions(
                         request = request,
-                        preset = valueList[valueIndex].value,
+                        preset = valueList[valueIndex].value
                     )
                 }
             }
@@ -1094,7 +1094,7 @@ class PhotoCaptureTest {
                 assertEquals(
                     photoCapture.getPreset(),
                     it,
-                    "set option preset $valueIndex",
+                    "set option preset $valueIndex"
                 )
 
                 valueIndex++
@@ -1162,7 +1162,7 @@ class PhotoCaptureTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "setOptions option not json error response"
             )
             exceptionNotJson = true

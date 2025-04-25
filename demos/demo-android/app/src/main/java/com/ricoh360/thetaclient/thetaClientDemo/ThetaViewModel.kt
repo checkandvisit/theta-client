@@ -23,7 +23,7 @@ import timber.log.Timber
  */
 class ThetaViewModel(
     private val thetaUrl: String = "http://192.168.1.1:80/",
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ViewModel() {
     private var thetaRepository: ThetaRepository
     private val _thetaInfoState = MutableStateFlow<ThetaRepository.ThetaInfo?>(null)
@@ -64,7 +64,6 @@ class ThetaViewModel(
         }
     }
 
-
     fun startPreview() {
         previewJob?.let {
             return
@@ -100,7 +99,6 @@ class ThetaViewModel(
             }
         }
     }
-
 
     @Suppress("BlockingMethodInNonBlockingContext")
     fun startPreviewWithCallback() {
@@ -155,5 +153,4 @@ class ThetaViewModel(
         super.onCleared()
         stopPreview()
     }
-
 }

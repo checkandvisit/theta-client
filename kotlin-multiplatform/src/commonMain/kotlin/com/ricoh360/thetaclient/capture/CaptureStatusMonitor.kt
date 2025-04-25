@@ -13,7 +13,7 @@ internal class CaptureStatusMonitor(
     var onChangeStatus: ((newStatus: CaptureStatus, oldStatus: CaptureStatus?) -> Unit),
     var onError: ((error: Throwable) -> Unit),
     val checkStateInterval: Long = CHECK_STATE_INTERVAL,
-    val checkShootingIdleCount: Int = CHECK_SHOOTING_IDLE_COUNT,
+    val checkShootingIdleCount: Int = CHECK_SHOOTING_IDLE_COUNT
 ) {
     private var isStartMonitor = false
     private val scope = CoroutineScope(Dispatchers.Default)

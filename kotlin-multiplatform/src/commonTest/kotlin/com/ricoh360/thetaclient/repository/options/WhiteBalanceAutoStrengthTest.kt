@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class WhiteBalanceAutoStrengthTest {
@@ -80,7 +80,7 @@ class WhiteBalanceAutoStrengthTest {
     fun convertOptionWhiteBalanceAutoStrengthTest() = runTest {
         val values = listOf(
             Pair(ThetaRepository.WhiteBalanceAutoStrengthEnum.ON, WhiteBalanceAutoStrength.ON),
-            Pair(ThetaRepository.WhiteBalanceAutoStrengthEnum.OFF, WhiteBalanceAutoStrength.OFF),
+            Pair(ThetaRepository.WhiteBalanceAutoStrengthEnum.OFF, WhiteBalanceAutoStrength.OFF)
         )
 
         values.forEach {

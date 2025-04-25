@@ -8,13 +8,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.ShootingMethod
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ShootingMethodTest {
@@ -82,7 +82,6 @@ class ShootingMethodTest {
             assertTrue(true, "setOptions ShootingMethod")
         }.onFailure {
             println(it.toString())
-
         }
     }
 
@@ -100,7 +99,7 @@ class ShootingMethodTest {
             Pair(ThetaRepository.ShootingMethodEnum.COMPOSITE, ShootingMethod.COMPOSITE),
             Pair(ThetaRepository.ShootingMethodEnum.CONTINUOUS, ShootingMethod.CONTINUOUS),
             Pair(ThetaRepository.ShootingMethodEnum.TIME_SHIFT, ShootingMethod.TIMESHIFT),
-            Pair(ThetaRepository.ShootingMethodEnum.BURST, ShootingMethod.BURST),
+            Pair(ThetaRepository.ShootingMethodEnum.BURST, ShootingMethod.BURST)
         )
 
         values.forEach {

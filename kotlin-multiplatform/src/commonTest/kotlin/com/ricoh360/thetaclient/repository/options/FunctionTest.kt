@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class FunctionTest {
@@ -81,7 +81,7 @@ class FunctionTest {
         val values = listOf(
             Pair(ThetaRepository.ShootingFunctionEnum.NORMAL, ShootingFunction.NORMAL),
             Pair(ThetaRepository.ShootingFunctionEnum.SELF_TIMER, ShootingFunction.SELF_TIMER),
-            Pair(ThetaRepository.ShootingFunctionEnum.MY_SETTING, ShootingFunction.MY_SETTING),
+            Pair(ThetaRepository.ShootingFunctionEnum.MY_SETTING, ShootingFunction.MY_SETTING)
         )
 
         values.forEach {

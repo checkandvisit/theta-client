@@ -57,7 +57,7 @@ fun PhotoListScreen(
                             ThumbnailImage(
                                 url = file.thumbnailUrl,
                                 width = thumbWidth,
-                                onClick = { toPhoto(file.name, file.fileUrl) },
+                                onClick = { toPhoto(file.name, file.fileUrl) }
                             )
                             Text(
                                 text = file.name,
@@ -73,7 +73,6 @@ fun PhotoListScreen(
     }
 }
 
-
 /**
  * Display a thumbnail.
  * @param url of a thumbnail.
@@ -88,6 +87,6 @@ fun ThumbnailImage(url: String, width: Dp, onClick: () -> Unit) {
         contentScale = ContentScale.Crop,
         modifier = Modifier
             .width(width)
-            .clickable { onClick() },
+            .clickable { onClick() }
     )
 }

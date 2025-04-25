@@ -31,7 +31,7 @@ internal data class StatusApiRequest(
     /**
      * request related id
      */
-    val id: String? = null,
+    val id: String? = null
 )
 
 /**
@@ -46,7 +46,7 @@ internal data class StatusApiParams(
     /**
      * status of this id
      */
-    val id: String? = null,
+    val id: String? = null
 )
 
 /**
@@ -59,8 +59,8 @@ internal fun decodeStatusApiResponse(body: String?): CommandApiResponse {
         return UnknownResponse("unknown")
     }
     var js = Json {
-        encodeDefaults = true    // Encode properties with default value.
-        explicitNulls = false    // Don't encode properties with null value.
+        encodeDefaults = true // Encode properties with default value.
+        explicitNulls = false // Don't encode properties with null value.
         ignoreUnknownKeys = true // Ignore unknown keys on decode.
     }
     var json: JsonObject? = null
@@ -146,4 +146,3 @@ internal fun decodeStatusApiResponse(body: String?): CommandApiResponse {
         return UnknownResponse(name = "unknown")
     }
 }
-

@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class SetPluginRequest(
     override val name: String = "camera._setPlugin",
-    override val parameters: SetPluginParams,
+    override val parameters: SetPluginParams
 ) : CommandApiRequest
 
 /**
@@ -25,7 +25,7 @@ internal data class SetPluginParams(
     /**
      * Boot selection
      */
-    val boot: Boolean,
+    val boot: Boolean
 )
 
 /**
@@ -66,6 +66,6 @@ internal data class SetPluginResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 
-    ) : CommandApiResponse
+) : CommandApiResponse

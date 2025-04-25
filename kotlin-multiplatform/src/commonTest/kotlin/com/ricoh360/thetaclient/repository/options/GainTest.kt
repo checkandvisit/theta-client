@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GainTest {
@@ -81,7 +81,7 @@ class GainTest {
         val values = listOf(
             Pair(ThetaRepository.GainEnum.NORMAL, Gain.NORMAL),
             Pair(ThetaRepository.GainEnum.MEGA_VOLUME, Gain.MEGA_VOLUME),
-            Pair(ThetaRepository.GainEnum.MUTE, Gain.MUTE),
+            Pair(ThetaRepository.GainEnum.MUTE, Gain.MUTE)
         )
 
         values.forEach {

@@ -85,7 +85,7 @@ internal data class InfoApiResponse(
     /**
      * List of supported APIs: ("1": v2.0, "2": v2.1)
      */
-    val apiLevel: List<Int>,
+    val apiLevel: List<Int>
 )
 
 /**
@@ -96,5 +96,5 @@ data class EndPoint(
     @Serializable(with = NumberAsIntSerializer::class)
     val httpPort: Int,
     @Serializable(with = NumberAsIntSerializer::class)
-    val httpUpdatesPort: Int,
+    val httpUpdatesPort: Int
 )

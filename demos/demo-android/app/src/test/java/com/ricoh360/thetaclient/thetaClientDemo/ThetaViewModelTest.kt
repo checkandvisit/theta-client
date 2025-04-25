@@ -57,5 +57,4 @@ internal class ThetaViewModelTest {
 
         vm.takePhoto(TakenCallback())
     }
-
 }
