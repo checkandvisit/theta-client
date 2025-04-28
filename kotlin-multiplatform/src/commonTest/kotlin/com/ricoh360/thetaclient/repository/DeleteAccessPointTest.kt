@@ -9,11 +9,11 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class DeleteAccessPointTest {
@@ -80,7 +80,7 @@ class DeleteAccessPointTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }

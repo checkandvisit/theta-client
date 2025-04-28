@@ -175,7 +175,6 @@ class VideoCapture private constructor(
             override fun onCaptureCompleted(fileUrl: String?) {
                 callOnCaptureCompleted(fileUrl)
             }
-
         }
         scope.launch {
             try {

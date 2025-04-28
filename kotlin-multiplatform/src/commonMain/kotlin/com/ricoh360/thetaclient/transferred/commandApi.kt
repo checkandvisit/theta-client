@@ -96,7 +96,7 @@ internal enum class CommandState {
      * command error
      */
     @SerialName("error")
-    ERROR,
+    ERROR
 }
 
 /**
@@ -131,7 +131,7 @@ internal data class CommandProgress(
     /**
      * Progress rate of command executed
      */
-    val completion: Float,
+    val completion: Float
 )
 
 /**
@@ -178,5 +178,5 @@ internal data class UnknownResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse

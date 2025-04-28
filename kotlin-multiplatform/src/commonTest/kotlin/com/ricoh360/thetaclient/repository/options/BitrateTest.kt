@@ -9,9 +9,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class BitrateTest {
@@ -127,7 +127,7 @@ class BitrateTest {
             Pair(ThetaRepository.BitrateEnum.FINE, "Fine"),
             Pair(ThetaRepository.BitrateEnum.NORMAL, "Normal"),
             Pair(ThetaRepository.BitrateEnum.ECONOMY, "Economy"),
-            Pair(ThetaRepository.BitrateNumber(12800000), "12800000"),
+            Pair(ThetaRepository.BitrateNumber(12800000), "12800000")
         )
 
         values.forEach {

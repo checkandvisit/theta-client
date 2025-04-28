@@ -11,15 +11,15 @@ import io.ktor.client.request.HttpRequestData
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.TextContent
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalSerializationApi::class, ExperimentalCoroutinesApi::class)
 class SetAccessPointTest {
@@ -203,7 +203,7 @@ class SetAccessPointTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }

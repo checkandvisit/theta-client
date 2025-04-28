@@ -9,9 +9,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ShutterSpeedTest {
@@ -142,7 +142,7 @@ class ShutterSpeedTest {
             Pair(ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_12800, 0.00007812),
             Pair(ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_16000, 0.0000625),
             Pair(ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_20000, 0.00005),
-            Pair(ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_25000, 0.00004),
+            Pair(ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_25000, 0.00004)
         )
 
         values.forEach {

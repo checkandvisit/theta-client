@@ -9,9 +9,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ContinuousNumberTest {
@@ -78,7 +78,7 @@ class ContinuousNumberTest {
             Pair(ThetaRepository.ContinuousNumberEnum.MAX_18, 18),
             Pair(ThetaRepository.ContinuousNumberEnum.MAX_19, 19),
             Pair(ThetaRepository.ContinuousNumberEnum.MAX_20, 20),
-            Pair(ThetaRepository.ContinuousNumberEnum.UNSUPPORTED, -1),
+            Pair(ThetaRepository.ContinuousNumberEnum.UNSUPPORTED, -1)
         )
 
         values.forEach {
@@ -101,17 +101,17 @@ class ContinuousNumberTest {
         val unsupportedValues = listOf(
             -2,
             -1,
-            21,
+            21
         )
         unsupportedValues.forEach {
             val orgOptions = Options(
-                continuousNumber = it,
+                continuousNumber = it
             )
             val options = ThetaRepository.Options(orgOptions)
             assertEquals(
                 options.continuousNumber,
                 ThetaRepository.ContinuousNumberEnum.UNSUPPORTED,
-                "continuousNumber $it",
+                "continuousNumber $it"
             )
         }
     }

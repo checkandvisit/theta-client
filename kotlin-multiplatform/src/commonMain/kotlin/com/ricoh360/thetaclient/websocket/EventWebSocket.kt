@@ -8,11 +8,11 @@ import kotlinx.serialization.json.Json
 
 data class CameraEvent(
     val options: ThetaRepository.Options?,
-    val state: ThetaRepository.ThetaState?,
+    val state: ThetaRepository.ThetaState?
 ) {
     internal constructor(event: CameraEventResponse) : this(
         options = event.options?.let { ThetaRepository.Options(it) },
-        state = event.state?.let { ThetaRepository.ThetaState(it) },
+        state = event.state?.let { ThetaRepository.ThetaState(it) }
     )
 }
 
@@ -27,7 +27,6 @@ class EventWebSocket(val endpoint: String) {
     @OptIn(ExperimentalSerializationApi::class)
     @Throws(Throwable::class)
     suspend fun start(callback: Callback) {
-
         client.start(object : WebSocketClientCallback {
             override fun onReceive(message: String?) {
                 message?.let {

@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class SetMySettingRequest(
     override val name: String = "camera._setMySetting",
-    override val parameters: SetMySettingParams,
+    override val parameters: SetMySettingParams
 ) : CommandApiRequest
 
 /**
@@ -26,7 +26,7 @@ internal data class SetMySettingParams(
     /**
      * Names of the options specified for acquisition in the JSON format and the set of current values.
      */
-    val options: Options,
+    val options: Options
 )
 
 /**
@@ -67,6 +67,6 @@ internal data class SetMySettingResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 
-    ) : CommandApiResponse
+) : CommandApiResponse

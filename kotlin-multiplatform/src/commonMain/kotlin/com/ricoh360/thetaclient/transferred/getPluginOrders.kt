@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class GetPluginOrdersRequest(
     override val name: String = "camera._getPluginOrders",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -49,7 +49,7 @@ internal data class GetPluginOrdersResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -62,5 +62,5 @@ internal data class ResultGetPluginOrders(
      * For Z1, list of three package names for the start-up plugin.
      * No restrictions for the number of package names for X.
      */
-    val pluginOrders: List<String>,
+    val pluginOrders: List<String>
 )

@@ -12,11 +12,11 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ListFilesTest {
@@ -171,7 +171,7 @@ class ListFilesTest {
         val storageArray = arrayOf(
             Pair(ThetaRepository.StorageEnum.INTERNAL, Storage.IN),
             Pair(ThetaRepository.StorageEnum.SD, Storage.SD),
-            Pair(ThetaRepository.StorageEnum.CURRENT, Storage.DEFAULT),
+            Pair(ThetaRepository.StorageEnum.CURRENT, Storage.DEFAULT)
         )
         assertEquals(storageArray.size, ThetaRepository.StorageEnum.values().size)
 
@@ -393,8 +393,8 @@ class ListFilesTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
-                "error response",
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
+                "error response"
             )
         }
     }
@@ -497,7 +497,7 @@ class ListFilesTest {
         val values = listOf(
             Pair(ThetaRepository.ProjectionTypeEnum.EQUIRECTANGULAR, _ProjectionType.EQUIRECTANGULAR),
             Pair(ThetaRepository.ProjectionTypeEnum.DUAL_FISHEYE, _ProjectionType.DUAL_FISHEYE),
-            Pair(ThetaRepository.ProjectionTypeEnum.FISHEYE, _ProjectionType.FISHEYE),
+            Pair(ThetaRepository.ProjectionTypeEnum.FISHEYE, _ProjectionType.FISHEYE)
         )
 
         assertEquals(ThetaRepository.ProjectionTypeEnum.values().size, values.size)
@@ -512,7 +512,7 @@ class ListFilesTest {
     @Test
     fun convertCodecEnumTest() = runTest {
         val values = listOf(
-            Pair(ThetaRepository.CodecEnum.H264MP4AVC, "H.264/MPEG-4 AVC"),
+            Pair(ThetaRepository.CodecEnum.H264MP4AVC, "H.264/MPEG-4 AVC")
         )
 
         assertEquals(ThetaRepository.CodecEnum.values().size, values.size)

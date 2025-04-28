@@ -13,7 +13,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class SetAccessPointRequest(
     override val name: String = "camera._setAccessPoint",
-    override val parameters: SetAccessPointParams,
+    override val parameters: SetAccessPointParams
 ) : CommandApiRequest
 
 /**
@@ -85,7 +85,7 @@ internal data class SetAccessPointParams(
      * THETA X Version 2.00.0 or later
      */
     @SerialName("_proxy")
-    val proxy: Proxy? = null,
+    val proxy: Proxy? = null
 )
 
 /**
@@ -126,5 +126,5 @@ internal data class SetAccessPointResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse

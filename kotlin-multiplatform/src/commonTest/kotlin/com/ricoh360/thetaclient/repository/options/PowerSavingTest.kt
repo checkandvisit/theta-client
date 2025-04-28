@@ -8,13 +8,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.PowerSaving
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class PowerSavingTest {
@@ -89,7 +89,7 @@ class PowerSavingTest {
     fun convertOptionPowerSavingTest() = runTest {
         val values = listOf(
             Pair(ThetaRepository.PowerSavingEnum.ON, PowerSaving.ON),
-            Pair(ThetaRepository.PowerSavingEnum.OFF, PowerSaving.OFF),
+            Pair(ThetaRepository.PowerSavingEnum.OFF, PowerSaving.OFF)
         )
 
         values.forEach {

@@ -29,7 +29,6 @@ fun PhotoScreen(fileName: String?, photoUrl: String?) {
     }
 }
 
-
 /**
  * A screen to display a sphere photo.
  * @param photoUrl URL to get a sphere photo.

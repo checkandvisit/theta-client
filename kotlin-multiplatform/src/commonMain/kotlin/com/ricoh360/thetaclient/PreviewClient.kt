@@ -42,7 +42,7 @@ internal interface PreviewClient {
         method: String = "POST",
         path: String = "/osc/commands/execute",
         body: String = "{\"name\":\"camera.getLivePreview\",\"parameters\":{}}",
-        contentType: String = "application/json",
+        contentType: String = "application/json"
     ): PreviewClient
 
     /**
@@ -59,7 +59,6 @@ internal interface PreviewClient {
      * close connection
      */
     suspend fun close()
-
 }
 
 /** exception for processing preview stream */
@@ -67,7 +66,7 @@ internal class PreviewClientException(
     /** messages */
     msg: String,
     /** caused exception */
-    cause: Throwable? = null,
+    cause: Throwable? = null
 ) : Exception(msg, cause)
 
 /**
@@ -195,7 +194,7 @@ internal class PreviewClientImpl : PreviewClient {
         val context = currentCoroutineContext()
         withTimeout(connectionTimeout) {
             val socket = builder.connect(
-                InetSocketAddress(url.host, url.port),
+                InetSocketAddress(url.host, url.port)
             ) {
                 socketTimeout = Companion.socketTimeout
                 receiveBufferSize = buffer.size
@@ -439,7 +438,7 @@ internal class PreviewClientImpl : PreviewClient {
         method: String,
         path: String,
         body: String,
-        contentType: String,
+        contentType: String
     ): PreviewClient {
         val client = requestPreview(endpoint, method, path, body, contentType) as PreviewClientImpl
         return when (client.status) {
@@ -471,9 +470,9 @@ internal class PreviewClientImpl : PreviewClient {
         path: String,
         body: String,
         contentType: String,
-        digest: String? = null,
+        digest: String? = null
     ): PreviewClient {
-        close()  // To prevent resource leaks
+        close() // To prevent resource leaks
         val url = URL(endpoint)
         connect(url)
         write("$method $path HTTP/1.1\r\n")

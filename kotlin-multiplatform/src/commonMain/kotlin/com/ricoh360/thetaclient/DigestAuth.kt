@@ -31,7 +31,7 @@ class DigestAuth(
      * If omitted, the default password will be used.
      * The default password is "THETA" + "XX" after the beginning of the serial number.
      */
-    password: String? = null,
+    password: String? = null
 ) {
     /**
      * Password
@@ -95,7 +95,7 @@ class DigestAuth(
      */
     fun makeDigestHeader(
         uri: String,
-        method: String,
+        method: String
     ): String {
         return makeDigestHeader(username, password, uri, method, realm, nonce, qop)
     }
@@ -121,7 +121,7 @@ internal fun makeDigestHeader(
     method: String,
     realm: String?,
     nonce: String?,
-    qop: String = DEFAULT_AUTH_QOP,
+    qop: String = DEFAULT_AUTH_QOP
 ): String {
     val cnonce = randomUUID().replace("-", "")
     val nc = DEFAULT_AUTH_NC
@@ -143,7 +143,10 @@ internal fun setupDigestAuth(httpClient: HttpClient) {
                     originalCall.response.headers[HttpHeaders.WWWAuthenticate]?.let { wwwAuth ->
                         val authHeader = parseAuthorizationHeader(wwwAuth) as HttpAuthHeader.Parameterized
                         it.updateAuthHeaderInfo(authHeader)
-                        request.headers.append(HttpHeaders.Authorization, it.makeDigestHeader(request.url.encodedPath, request.method.value))
+                        request.headers.append(
+                            HttpHeaders.Authorization,
+                            it.makeDigestHeader(request.url.encodedPath, request.method.value)
+                        )
                         execute(request)
                     }
                 } ?: originalCall

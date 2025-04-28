@@ -8,12 +8,12 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.TopBottomCorrectionOption
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TopBottomCorrectionTest {
@@ -86,7 +86,7 @@ class TopBottomCorrectionTest {
             Pair(ThetaRepository.TopBottomCorrectionOptionEnum.APPLY_SAVE, TopBottomCorrectionOption.APPLY_SAVE),
             Pair(ThetaRepository.TopBottomCorrectionOptionEnum.APPLY_LOAD, TopBottomCorrectionOption.APPLY_LOAD),
             Pair(ThetaRepository.TopBottomCorrectionOptionEnum.DISAPPLY, TopBottomCorrectionOption.DISAPPLY),
-            Pair(ThetaRepository.TopBottomCorrectionOptionEnum.MANUAL, TopBottomCorrectionOption.MANUAL),
+            Pair(ThetaRepository.TopBottomCorrectionOptionEnum.MANUAL, TopBottomCorrectionOption.MANUAL)
         )
 
         values.forEach {

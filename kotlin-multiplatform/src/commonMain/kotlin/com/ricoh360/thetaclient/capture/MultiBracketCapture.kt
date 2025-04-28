@@ -35,7 +35,7 @@ class MultiBracketCapture private constructor(
     private val endpoint: String,
     private val cameraModel: ThetaRepository.ThetaModel? = null,
     options: Options,
-    private val checkStatusCommandInterval: Long,
+    private val checkStatusCommandInterval: Long
 ) : Capture(options) {
 
     companion object {
@@ -236,7 +236,7 @@ class MultiBracketCapture private constructor(
                     )
                 )
             },
-            checkStatusCommandInterval,
+            checkStatusCommandInterval
         )
         captureStatusMonitor = monitor
         monitor.start()
@@ -310,7 +310,7 @@ class MultiBracketCapture private constructor(
      */
     class Builder internal constructor(
         private val endpoint: String,
-        private val cameraModel: ThetaRepository.ThetaModel? = null,
+        private val cameraModel: ThetaRepository.ThetaModel? = null
     ) : Capture.Builder<Builder>() {
         private var interval: Long? = null
         private val bracketSettings: MutableList<ThetaRepository.BracketSetting> = mutableListOf()
@@ -413,7 +413,7 @@ class MultiBracketCapture private constructor(
             exposureProgram: ThetaRepository.ExposureProgramEnum? = null,
             iso: ThetaRepository.IsoEnum? = null,
             shutterSpeed: ThetaRepository.ShutterSpeedEnum? = null,
-            whiteBalance: ThetaRepository.WhiteBalanceEnum? = null,
+            whiteBalance: ThetaRepository.WhiteBalanceEnum? = null
         ): Builder {
             if (bracketSettings.size >= getMaxShots()) {
                 throw ThetaRepository.ThetaWebApiException(messageExceptionBracketNumber)
@@ -474,7 +474,7 @@ class MultiBracketCapture private constructor(
                     else -> colorTemperature?.let {
                         ThetaRepository.WhiteBalanceEnum.COLOR_TEMPERATURE
                     } ?: whiteBalance ?: ThetaRepository.WhiteBalanceEnum.AUTO
-                },
+                }
             )
             bracketSettings.add(bracketSetting)
             return this
@@ -508,7 +508,7 @@ class MultiBracketCapture private constructor(
                     exposureProgram = it.exposureProgram,
                     iso = it.iso,
                     shutterSpeed = it.shutterSpeed,
-                    whiteBalance = it.whiteBalance,
+                    whiteBalance = it.whiteBalance
                 )
             }
             return this
@@ -549,7 +549,7 @@ class MultiBracketCapture private constructor(
                 ThetaRepository.ThetaModel.THETA_SC2 to Pair(MIN_SHOTS, MAX_SHOTS),
                 ThetaRepository.ThetaModel.THETA_SC2_B to Pair(MIN_SHOTS, MAX_SHOTS),
                 ThetaRepository.ThetaModel.THETA_Z1 to Pair(MIN_SHOTS, MAX_SHOTS_Z1),
-                ThetaRepository.ThetaModel.THETA_X to Pair(MIN_SHOTS, MAX_SHOTS),
+                ThetaRepository.ThetaModel.THETA_X to Pair(MIN_SHOTS, MAX_SHOTS)
             )
 
             /**

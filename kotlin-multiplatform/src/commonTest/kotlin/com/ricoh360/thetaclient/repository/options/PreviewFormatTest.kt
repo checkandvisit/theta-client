@@ -8,13 +8,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.PreviewFormat
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class PreviewFormatTest {
@@ -95,7 +95,7 @@ class PreviewFormatTest {
             Pair(ThetaRepository.PreviewFormatEnum.W640_H320_F30, PreviewFormat(640, 320, 30)),
             Pair(ThetaRepository.PreviewFormatEnum.W640_H320_F10, PreviewFormat(640, 320, 10)),
             Pair(ThetaRepository.PreviewFormatEnum.W640_H320_F8, PreviewFormat(640, 320, 8)),
-            Pair(ThetaRepository.PreviewFormatEnum.W3840_H1920_F30, PreviewFormat(3840, 1920, 30)),
+            Pair(ThetaRepository.PreviewFormatEnum.W3840_H1920_F30, PreviewFormat(3840, 1920, 30))
         )
 
         values.forEach {

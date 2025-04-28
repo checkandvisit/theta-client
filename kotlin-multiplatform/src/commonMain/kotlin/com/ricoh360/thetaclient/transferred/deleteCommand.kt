@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class DeleteRequest(
     override val name: String = "camera.delete",
-    override val parameters: DeleteParams,
+    override val parameters: DeleteParams
 ) : CommandApiRequest
 
 /**
@@ -27,7 +27,7 @@ internal data class DeleteParams(
      * images and “video” as all videos. (These should be specified
      * alone.)
      */
-    val fileUrls: List<String>,
+    val fileUrls: List<String>
 )
 
 /**
@@ -68,5 +68,5 @@ internal data class DeleteResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse

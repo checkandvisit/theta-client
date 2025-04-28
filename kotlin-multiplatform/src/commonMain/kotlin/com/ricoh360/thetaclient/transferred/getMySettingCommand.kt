@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class GetMySettingRequest(
     override val name: String = "camera._getMySetting",
-    override val parameters: GetMySettingParams,
+    override val parameters: GetMySettingParams
 ) : CommandApiRequest
 
 /**
@@ -26,7 +26,7 @@ internal data class GetMySettingParams(
      * option name list to be acquired
      * Other than Theta S and SC, do not set value then all properties are acquired.
      */
-    val optionNames: List<String>? = null,
+    val optionNames: List<String>? = null
 )
 
 /**
@@ -67,7 +67,7 @@ internal data class GetMySettingResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -78,5 +78,5 @@ internal data class ResultGetMySetting(
     /**
      * option key value pair
      */
-    val options: Options,
+    val options: Options
 )

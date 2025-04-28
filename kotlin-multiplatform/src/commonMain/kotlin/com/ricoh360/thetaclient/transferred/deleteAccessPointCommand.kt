@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class DeleteAccessPointRequest(
     override val name: String = "camera._deleteAccessPoint",
-    override val parameters: DeleteAccessPointParams,
+    override val parameters: DeleteAccessPointParams
 ) : CommandApiRequest
 
 /**
@@ -23,7 +23,7 @@ internal data class DeleteAccessPointParams(
     /**
      * SSID of the access point to delete
      */
-    val ssid: String,
+    val ssid: String
 )
 
 /**
@@ -64,5 +64,5 @@ internal data class DeleteAccessPointResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse

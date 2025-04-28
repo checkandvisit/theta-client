@@ -65,7 +65,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callInfoApi(
-        endpoint: String,
+        endpoint: String
     ): InfoApiResponse {
         return syncExecutor(requestScope, ApiClient.timeout.requestTimeout) {
             httpClient.get(getApiUrl(endpoint, InfoApi.PATH)).body()
@@ -84,7 +84,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callLicenseApi(
-        endpoint: String,
+        endpoint: String
     ): HttpResponse {
         return syncExecutor(requestScope, ApiClient.timeout.requestTimeout) {
             httpClient.get(getApiUrl(endpoint, LicenseApi.PATH))
@@ -103,7 +103,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callStateApi(
-        endpoint: String,
+        endpoint: String
     ): StateApiResponse {
         return syncExecutor(requestScope, ApiClient.timeout.requestTimeout) {
             httpClient.post(getApiUrl(endpoint, StateApi.PATH)).body()
@@ -126,7 +126,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callStatusApi(
         endpoint: String,
-        params: StatusApiParams,
+        params: StatusApiParams
     ): CommandApiResponse {
         return syncExecutor(requestScope, ApiClient.timeout.requestTimeout) {
             val request = StatusApiRequest(name = params.name, id = params.id)
@@ -166,15 +166,18 @@ internal object ThetaApi {
         filePaths: List<String>,
         connectTimeout: Long,
         socketTimeout: Long,
-        callback: ((Int) -> Unit)?,
+        callback: ((Int) -> Unit)?
     ): UpdateFirmwareApiResponse {
         val DUMMY_RESPONSE = "{\"name\":\"camera.${apiPath}\",\"state\":\"done\"}"
         if (filePaths.isEmpty()) {
             throw IllegalArgumentException("Empty filePaths")
         }
         val responseBody = multipartPostClient.request(endpoint, apiPath, filePaths, connectTimeout, socketTimeout, callback)
-        return if (responseBody.size > 0) Json.decodeFromString<UpdateFirmwareApiResponse>(String(responseBody))
-        else Json.decodeFromString(DUMMY_RESPONSE) // Theta X does not send response body
+        return if (responseBody.size > 0) {
+            Json.decodeFromString<UpdateFirmwareApiResponse>(String(responseBody))
+        } else {
+            Json.decodeFromString(DUMMY_RESPONSE) // Theta X does not send response body
+        }
     }
 
     /*
@@ -194,7 +197,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callStartSessionCommand(
-        endpoint: String,
+        endpoint: String
     ): StartSessionResponse {
         val request = StartSessionRequest()
         return postCommandApi(endpoint, request).body()
@@ -213,7 +216,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callCancelVideoConvertCommand(
-        endpoint: String,
+        endpoint: String
     ): CancelVideoConvertResponse {
         val request = CancelVideoConvertRequest()
         return postCommandApi(endpoint, request).body()
@@ -235,7 +238,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callConvertVideoFormatsCommand(
         endpoint: String,
-        params: ConvertVideoFormatsParams,
+        params: ConvertVideoFormatsParams
     ): ConvertVideoFormatsResponse {
         val request = ConvertVideoFormatsRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -257,7 +260,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callDeleteCommand(
         endpoint: String,
-        params: DeleteParams,
+        params: DeleteParams
     ): DeleteResponse {
         val request = DeleteRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -271,7 +274,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callFinishWlanCommand(
-        endpoint: String,
+        endpoint: String
     ): FinishWlanResponse {
         val request = FinishWlanRequest()
         return postCommandApi(endpoint, request).body()
@@ -350,7 +353,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callGetLivePreviewCommand(
         endpoint: String,
-        frameHandler: suspend (Pair<ByteArray, Int>) -> Boolean,
+        frameHandler: suspend (Pair<ByteArray, Int>) -> Boolean
     ) {
         waitCaptureStartTime()
         var retry = 4 // retry count when preview command failed
@@ -406,7 +409,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callGetMetadataCommand(
         endpoint: String,
-        params: GetMetadataParams,
+        params: GetMetadataParams
     ): GetMetadataResponse {
         val request = GetMetadataRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -428,7 +431,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callListFilesCommand(
         endpoint: String,
-        params: ListFilesParams,
+        params: ListFilesParams
     ): ListFilesResponse {
         val request = ListFilesRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -447,7 +450,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callResetCommand(
-        endpoint: String,
+        endpoint: String
     ): ResetResponse {
         val request = ResetRequest()
         return postCommandApi(endpoint, request).body()
@@ -466,7 +469,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callListAccessPointsCommand(
-        endpoint: String,
+        endpoint: String
     ): ListAccessPointsResponse {
         val request = ListAccessPointsRequest()
         return postCommandApi(endpoint, request).body()
@@ -487,7 +490,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callStartCaptureCommand(
         endpoint: String,
-        params: StartCaptureParams,
+        params: StartCaptureParams
     ): StartCaptureResponse {
         waitCaptureStartTime()
         val request = StartCaptureRequest(parameters = params)
@@ -507,7 +510,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callStopCaptureCommand(
-        endpoint: String,
+        endpoint: String
     ): StopCaptureResponse {
         val request = StopCaptureRequest()
         return postCommandApi(endpoint, request).body()
@@ -526,7 +529,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callTakePictureCommand(
-        endpoint: String,
+        endpoint: String
     ): TakePictureResponse {
         waitCaptureStartTime()
         val request = TakePictureRequest()
@@ -549,7 +552,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callDeleteAccessPointCommand(
         endpoint: String,
-        params: DeleteAccessPointParams,
+        params: DeleteAccessPointParams
     ): DeleteAccessPointResponse {
         val request = DeleteAccessPointRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -571,7 +574,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callSetAccessPointCommand(
         endpoint: String,
-        params: SetAccessPointParams,
+        params: SetAccessPointParams
     ): SetAccessPointResponse {
         val request = SetAccessPointRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -590,7 +593,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callStopSelfTimerCommand(
-        endpoint: String,
+        endpoint: String
     ): StopSelfTimerResponse {
         val request = StopSelfTimerRequest()
         return postCommandApi(endpoint, request).body()
@@ -640,7 +643,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callSetOptionsCommand(
         endpoint: String,
-        params: SetOptionsParams,
+        params: SetOptionsParams
     ): SetOptionsResponse {
         val request = SetOptionsRequest(parameters = params)
         val response: SetOptionsResponse = postCommandApi(endpoint, request).body()
@@ -666,7 +669,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callGetOptionsCommand(
         endpoint: String,
-        params: GetOptionsParams,
+        params: GetOptionsParams
     ): GetOptionsResponse {
         val request = GetOptionsRequest(parameters = params)
         val response: GetOptionsResponse = postCommandApi(endpoint, request).body()
@@ -692,7 +695,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callGetMySettingCommand(
         endpoint: String,
-        params: GetMySettingParams,
+        params: GetMySettingParams
     ): GetMySettingResponse {
         val request = GetMySettingRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -714,7 +717,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callSetMySettingCommand(
         endpoint: String,
-        params: SetMySettingParams,
+        params: SetMySettingParams
     ): SetMySettingResponse {
         val request = SetMySettingRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -736,7 +739,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callDeleteMySettingCommand(
         endpoint: String,
-        params: DeleteMySettingParams,
+        params: DeleteMySettingParams
     ): DeleteMySettingResponse {
         val request = DeleteMySettingRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -755,7 +758,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callListPluginsCommand(
-        endpoint: String,
+        endpoint: String
     ): ListPluginsResponse {
         val request = ListPluginsRequest()
         return postCommandApi(endpoint, request).body()
@@ -777,7 +780,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callSetPluginCommand(
         endpoint: String,
-        params: SetPluginParams,
+        params: SetPluginParams
     ): SetPluginResponse {
         val request = SetPluginRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -799,7 +802,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callPluginControlCommand(
         endpoint: String,
-        params: PluginControlParams,
+        params: PluginControlParams
     ): PluginControlResponse {
         val request = PluginControlRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -821,7 +824,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callGetPluginLicenseCommand(
         endpoint: String,
-        params: GetPluginLicenseParams,
+        params: GetPluginLicenseParams
     ): HttpResponse {
         val request = GetPluginLicenseRequest(parameters = params)
         return postCommandApi(endpoint, request)
@@ -842,7 +845,7 @@ internal object ThetaApi {
      */
     @Throws(Throwable::class)
     suspend fun callGetPluginOrdersCommand(
-        endpoint: String,
+        endpoint: String
     ): GetPluginOrdersResponse {
         val request = GetPluginOrdersRequest()
         return postCommandApi(endpoint, request).body()
@@ -864,7 +867,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callSetPluginOrdersCommand(
         endpoint: String,
-        params: SetPluginOrdersParams,
+        params: SetPluginOrdersParams
     ): SetPluginOrdersResponse {
         val request = SetPluginOrdersRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -887,7 +890,7 @@ internal object ThetaApi {
     @Throws(Throwable::class)
     suspend fun callSetBluetoothDeviceCommand(
         endpoint: String,
-        params: SetBluetoothDeviceParams,
+        params: SetBluetoothDeviceParams
     ): SetBluetoothDeviceResponse {
         val request = SetBluetoothDeviceRequest(parameters = params)
         return postCommandApi(endpoint, request).body()
@@ -898,7 +901,7 @@ internal object ThetaApi {
      */
     private suspend inline fun <reified T : CommandApiRequest> postCommandApi(
         endpoint: String,
-        body: T,
+        body: T
     ): HttpResponse {
         return syncExecutor(requestScope, ApiClient.timeout.requestTimeout) {
             httpClient.post(getApiUrl(endpoint, CommandApi.PATH)) {
@@ -916,7 +919,7 @@ internal object ThetaApi {
      */
     private fun getApiUrl(
         endpoint: String,
-        apiPath: String,
+        apiPath: String
     ): String {
         if (endpoint.endsWith('/')) {
             return endpoint.dropLast(1) + apiPath

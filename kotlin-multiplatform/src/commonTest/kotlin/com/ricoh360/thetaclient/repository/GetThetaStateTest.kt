@@ -7,8 +7,8 @@ import com.ricoh360.thetaclient.transferred.*
 import io.ktor.client.network.sockets.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.test.runTest
 import kotlin.test.*
+import kotlinx.coroutines.test.runTest
 
 class GetThetaStateTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -734,7 +734,6 @@ class GetThetaStateTest {
             ThetaRepository.CameraErrorEnum.COMPASS_CALIBRATION,
             "CameraErrorEnum"
         )
-
     }
 
     /**
@@ -756,7 +755,7 @@ class GetThetaStateTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }

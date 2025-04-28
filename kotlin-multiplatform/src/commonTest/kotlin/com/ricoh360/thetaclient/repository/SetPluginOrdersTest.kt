@@ -6,14 +6,14 @@ import com.ricoh360.thetaclient.SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1
 import com.ricoh360.thetaclient.ThetaRepository
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.ExperimentalSerializationApi
 
 @OptIn(ExperimentalSerializationApi::class, ExperimentalCoroutinesApi::class)
 class SetPluginOrdersTest {
@@ -65,7 +65,10 @@ class SetPluginOrdersTest {
         }.onSuccess {
             assertTrue(false, "setPluginOrders()") // cannot be succeeded
         }.onFailure {
-            assertEquals(it.message, "Argument list must have $SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1 or less elements for RICOH THETA Z1")
+            assertEquals(
+                it.message,
+                "Argument list must have $SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1 or less elements for RICOH THETA Z1"
+            )
         }
     }
 }

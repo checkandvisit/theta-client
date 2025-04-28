@@ -6,10 +6,10 @@ import com.ricoh360.thetaclient.ThetaRepository
 import io.ktor.http.*
 import io.ktor.utils.io.*
 import io.ktor.utils.io.core.toByteArray
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlin.test.*
 
 /**
  * This test uses a non-public API.
@@ -38,7 +38,7 @@ class UpdateFirmwareTest {
         var apiPath: String? = null
         kotlin.runCatching {
             apiPath = ""
-                //System.getenv(FIRMWARE_UPDATE_API_ENV_NAME)
+            //System.getenv(FIRMWARE_UPDATE_API_ENV_NAME)
         }.onFailure {
             println("$FIRMWARE_UPDATE_API_ENV_NAME can not be accessed so updateFirmwareTest() is skipped")
         }

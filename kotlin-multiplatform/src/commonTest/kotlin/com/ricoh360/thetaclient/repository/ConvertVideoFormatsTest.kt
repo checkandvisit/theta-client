@@ -12,15 +12,15 @@ import io.ktor.client.request.HttpRequestData
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.TextContent
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlinx.coroutines.test.runTest
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
 
 @OptIn(ExperimentalSerializationApi::class)
 class ConvertVideoFormatsTest {
@@ -59,7 +59,11 @@ class ConvertVideoFormatsTest {
         assertEquals(convertVideoFormatsRequest.parameters.size, format, "convertVideoFormats format")
         assertEquals(convertVideoFormatsRequest.parameters.projectionType, projectionType, "convertVideoFormats projectionType")
         assertEquals(convertVideoFormatsRequest.parameters.codec, codec, "convertVideoFormats codec")
-        assertEquals(convertVideoFormatsRequest.parameters.topBottomCorrection, topBottomCorrection, "convertVideoFormats topBottomCorrection")
+        assertEquals(
+            convertVideoFormatsRequest.parameters.topBottomCorrection,
+            topBottomCorrection,
+            "convertVideoFormats topBottomCorrection"
+        )
     }
 
     /**
@@ -315,7 +319,7 @@ class ConvertVideoFormatsTest {
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
                 e.message!!.indexOf("json", 0, true) >= 0 ||
-                        e.message!!.indexOf("Illegal", 0, true) >= 0,
+                    e.message!!.indexOf("Illegal", 0, true) >= 0,
                 "error response"
             )
         }

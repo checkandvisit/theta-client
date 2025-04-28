@@ -8,9 +8,9 @@ import com.ricoh360.thetaclient.transferred.ImageStitching
 import com.ricoh360.thetaclient.transferred.Options
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ImageStitchingTest {
@@ -91,7 +91,7 @@ class ImageStitchingTest {
             Pair(ThetaRepository.ImageStitchingEnum.DYNAMIC_SEMI_AUTO, ImageStitching.DYNAMIC_SEMI_AUTO),
             Pair(ThetaRepository.ImageStitchingEnum.DYNAMIC_SAVE, ImageStitching.DYNAMIC_SAVE),
             Pair(ThetaRepository.ImageStitchingEnum.DYNAMIC_LOAD, ImageStitching.DYNAMIC_LOAD),
-            Pair(ThetaRepository.ImageStitchingEnum.NONE, ImageStitching.NONE),
+            Pair(ThetaRepository.ImageStitchingEnum.NONE, ImageStitching.NONE)
         )
 
         values.forEach {

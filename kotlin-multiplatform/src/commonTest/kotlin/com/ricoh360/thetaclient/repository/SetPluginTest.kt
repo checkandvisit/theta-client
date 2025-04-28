@@ -7,9 +7,9 @@ import io.ktor.client.network.sockets.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class SetPluginTest {
@@ -44,6 +44,5 @@ class SetPluginTest {
             println(it.toString())
             assertTrue(false, "setPlugin")
         }
-
     }
 }

@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class TakePictureRequest(
     override val name: String = "camera.takePicture",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -52,7 +52,7 @@ internal data class TakePictureResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -68,5 +68,5 @@ internal data class ResultTakePicture(
     /**
      * DNG file URL when shooting with raw+ (THETA Z1 or later)
      */
-    val _dngFileUrl: String? = null,
+    val _dngFileUrl: String? = null
 )

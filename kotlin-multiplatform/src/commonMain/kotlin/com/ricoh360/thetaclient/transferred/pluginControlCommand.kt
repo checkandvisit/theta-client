@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class PluginControlRequest(
     override val name: String = "camera._pluginControl",
-    override val parameters: PluginControlParams,
+    override val parameters: PluginControlParams
 ) : CommandApiRequest
 
 /**
@@ -27,7 +27,7 @@ internal data class PluginControlParams(
      * If no target is specified, then Plugin 1 will start. This parameter is ignored when action parameter is "finish".
      * Not supported by Theta V.
      */
-    val plugin: String? = null,
+    val plugin: String? = null
 )
 
 /**
@@ -68,6 +68,6 @@ internal data class PluginControlResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 
-    ) : CommandApiResponse
+) : CommandApiResponse

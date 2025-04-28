@@ -155,7 +155,7 @@ open class BaseHttpClient {
         withContext(Dispatchers.Default) {
             withTimeout(connectionTimeout) {
                 val socket = builder.connect(
-                    InetSocketAddress(this@BaseHttpClient.endpoint!!.host, this@BaseHttpClient.endpoint!!.port),
+                    InetSocketAddress(this@BaseHttpClient.endpoint!!.host, this@BaseHttpClient.endpoint!!.port)
                 ) {
                     this.keepAlive = true
                     this.receiveBufferSize = receiveBuffer.size
@@ -459,7 +459,6 @@ open class BaseHttpClient {
             this.responseBody = buf
         }
     }
-
 }
 
 /** exception for posting firmware files */
@@ -467,9 +466,8 @@ class BaseHttpClientException(
     /** messages */
     msg: String,
     /** caused exception */
-    cause: Throwable? = null,
+    cause: Throwable? = null
 ) : Exception(msg, cause)
-
 
 /**
  * HTTP client interface for update firmware
@@ -500,7 +498,7 @@ interface MultipartPostClient {
         connectionTimeout: Long,
         socketTimeout: Long,
         callback: ((Int) -> Unit)?,
-        boundary: String = BOUNDARY,
+        boundary: String = BOUNDARY
     ): ByteArray
 }
 
@@ -543,7 +541,7 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
                 Pair("Content-Length", contentLength.toString()),
                 Pair("Connection", "Keep-Alive"),
                 Pair("Cache-Control", "no-cache"),
-                Pair("Content-Type", "multipart/form-data; boundary=$boundary"),
+                Pair("Content-Type", "multipart/form-data; boundary=$boundary")
             )
             authorization?.let {
                 headers.add(Pair("Authorization", authorization))
@@ -563,7 +561,7 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
                 Pair("Host", host),
                 Pair("Accept", "*/*"),
                 Pair("Connection", "Keep-Alive"),
-                Pair("Cache-Control", "no-cache"),
+                Pair("Cache-Control", "no-cache")
             )
         }
 
@@ -596,7 +594,7 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
             return listOf(
                 Pair("Content-Disposition", "form-data; name=\"firmware\"; filename=\"$fileName\""),
                 Pair("Content-Type", "application/octet-stream"),
-                Pair("Content-Transfer-Encoding", "binary"),
+                Pair("Content-Transfer-Encoding", "binary")
             )
         }
 
@@ -663,7 +661,6 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
             }
             size
         }
-
     }
 
     /**
@@ -686,7 +683,7 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
         connectionTimeout: Long,
         socketTimeout: Long,
         callback: ((Int) -> Unit)?,
-        boundary: String,
+        boundary: String
     ): ByteArray {
         val authorizationHeader: String? = checkAuthenticationNeeded(endpoint, path, connectionTimeout, socketTimeout)
         requestWithAuth(endpoint, path, filePaths, connectionTimeout, socketTimeout, callback, boundary, authorizationHeader)
@@ -728,7 +725,7 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
         socketTimeout: Long,
         callback: ((Int) -> Unit)?,
         boundary: String,
-        digest: String? = null,
+        digest: String? = null
     ) {
         val contentLength = getContentLength(filePaths, boundary)
         if (!isConnected()) connect(endpoint, connectionTimeout, socketTimeout)
@@ -827,7 +824,6 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
         throw (BaseHttpClientException("No authentication information is set"))
     }
 
-
     /**
      * Get the length of the HTTP contents
      *
@@ -868,5 +864,4 @@ class MultipartPostClientImpl : MultipartPostClient, BaseHttpClient() {
     private suspend fun writeCloseDelimiter(boundary: String) {
         write(genCloseDelimiter(boundary))
     }
-
 }

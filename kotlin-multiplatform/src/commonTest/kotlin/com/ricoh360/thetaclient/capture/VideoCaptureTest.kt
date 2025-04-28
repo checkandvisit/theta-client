@@ -11,17 +11,17 @@ import com.ricoh360.thetaclient.transferred.MediaType
 import io.ktor.client.network.sockets.ConnectTimeoutException
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeout
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeout
 
 class VideoCaptureTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -87,7 +87,7 @@ class VideoCaptureTest {
                             }
                         }
                     } else {
-                        ""  // Error
+                        "" // Error
                     }
                 }
             }
@@ -163,7 +163,7 @@ class VideoCaptureTest {
         // setup
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/VideoCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/VideoCapture/start_capture_done.json").readText()
         )
         var counter = 0
         var idleCount = 0
@@ -248,11 +248,11 @@ class VideoCaptureTest {
 
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
+            Resource("src/commonTest/resources/setOptions/set_options_done.json").readText()
         )
         val requestPathArray = arrayOf(
             "/osc/commands/execute",
-            "/osc/commands/execute",
+            "/osc/commands/execute"
         )
         var counter = 0
         MockApiClient.onRequest = { request ->
@@ -374,8 +374,14 @@ class VideoCaptureTest {
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2K_60F, MediaFileFormat(MediaType.MP4, 1920, 960, "H.264/MPEG-4 AVC", 60)),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2752_2F, MediaFileFormat(MediaType.MP4, 2752, 2752, "H.264/MPEG-4 AVC", 2)),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2752_5F, MediaFileFormat(MediaType.MP4, 2752, 2752, "H.264/MPEG-4 AVC", 5)),
-            Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2752_10F, MediaFileFormat(MediaType.MP4, 2752, 2752, "H.264/MPEG-4 AVC", 10)),
-            Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2752_30F, MediaFileFormat(MediaType.MP4, 2752, 2752, "H.264/MPEG-4 AVC", 30)),
+            Pair(
+                ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2752_10F,
+                MediaFileFormat(MediaType.MP4, 2752, 2752, "H.264/MPEG-4 AVC", 10)
+            ),
+            Pair(
+                ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2752_30F,
+                MediaFileFormat(MediaType.MP4, 2752, 2752, "H.264/MPEG-4 AVC", 30)
+            ),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_1F, MediaFileFormat(MediaType.MP4, 2688, 2688, "H.264/MPEG-4 AVC", 1)),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_2_7K_2F, MediaFileFormat(MediaType.MP4, 2688, 2688, "H.264/MPEG-4 AVC", 2)),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_3_6K_1F, MediaFileFormat(MediaType.MP4, 3648, 3648, "H.264/MPEG-4 AVC", 1)),
@@ -391,7 +397,7 @@ class VideoCaptureTest {
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_5_7K_30F, MediaFileFormat(MediaType.MP4, 5760, 2880, "H.264/MPEG-4 AVC", 30)),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_7K_2F, MediaFileFormat(MediaType.MP4, 7680, 3840, "H.264/MPEG-4 AVC", 2)),
             Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_7K_5F, MediaFileFormat(MediaType.MP4, 7680, 3840, "H.264/MPEG-4 AVC", 5)),
-            Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_7K_10F, MediaFileFormat(MediaType.MP4, 7680, 3840, "H.264/MPEG-4 AVC", 10)),
+            Pair(ThetaRepository.VideoFileFormatEnum.VIDEO_7K_10F, MediaFileFormat(MediaType.MP4, 7680, 3840, "H.264/MPEG-4 AVC", 10))
         )
 
         val responseArray = arrayOf(
@@ -654,7 +660,7 @@ class VideoCaptureTest {
         // setup
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            Resource("src/commonTest/resources/VideoCapture/start_capture_error.json").readText(), // startCapture error
+            Resource("src/commonTest/resources/VideoCapture/start_capture_error.json").readText() // startCapture error
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->
@@ -709,7 +715,7 @@ class VideoCaptureTest {
         // setup
         val responseArray = arrayOf(
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
-            "Status error UnitTest", // status error not json
+            "Status error UnitTest" // status error not json
         )
         var counter = 0
         MockApiClient.onRequest = { _ ->

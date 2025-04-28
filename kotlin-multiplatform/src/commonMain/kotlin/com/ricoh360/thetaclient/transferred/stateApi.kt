@@ -28,7 +28,7 @@ internal data class StateApiResponse(
     /**
      * Camera state (Refer to the next section for details.)
      */
-    val state: CameraState,
+    val state: CameraState
 )
 
 /**
@@ -218,7 +218,7 @@ internal data class CameraState(
      * RICOH THETA X firmware v2.20.1 or later
      * RICOH THETA Z1 firmware v3.10.2 or later
      */
-    val _batteryTemp: Int? = null,
+    val _batteryTemp: Int? = null
 )
 
 internal object CaptureStatusSerializer :
@@ -295,7 +295,7 @@ internal enum class CaptureStatus : SerialNameEnum {
      */
     BURST_SHOOTING {
         override val serialName: String = "burst shooting"
-    },
+    }
 }
 
 /**
@@ -319,7 +319,7 @@ internal enum class ChargingState {
      * battery disconnect
      */
     @SerialName("disconnect")
-    DISCONNECT,
+    DISCONNECT
 }
 
 /**
@@ -343,7 +343,7 @@ internal enum class ShootingFunction {
      * My setting
      */
     @SerialName("mySetting")
-    MY_SETTING,
+    MY_SETTING
 }
 
 /**
@@ -367,7 +367,7 @@ internal enum class MicrophoneOption {
      * Use the external microphone when recording video
      */
     @SerialName("External")
-    EXTERNAL,
+    EXTERNAL
 }
 
 /**
@@ -385,7 +385,7 @@ internal enum class StorageOption {
      * Record to SD card
      */
     @SerialName("SD")
-    SD,
+    SD
 }
 
 internal object CameraErrorSerializer :
@@ -556,7 +556,7 @@ internal enum class CameraError {
      * Same as COMPASS_CALIBRATION and will be deleted.
      */
     @SerialName("ELECTRONIC_COMPASS_CALIBRATION")
-    ELECTRONIC_COMPASS_CALIBRATION,
+    ELECTRONIC_COMPASS_CALIBRATION
 
     // 0x00000800: Plug-in start warning (IoT technical standards
     // compliance)

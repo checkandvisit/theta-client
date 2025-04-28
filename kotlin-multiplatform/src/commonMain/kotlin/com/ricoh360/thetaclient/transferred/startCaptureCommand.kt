@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class StartCaptureRequest(
     override val name: String = "camera.startCapture",
-    override val parameters: StartCaptureParams,
+    override val parameters: StartCaptureParams
 ) : CommandApiRequest
 
 /**
@@ -27,7 +27,7 @@ internal data class StartCaptureParams(
      *
      * @see ShootingMode
      */
-    val _mode: ShootingMode? = null,
+    val _mode: ShootingMode? = null
 )
 
 /**
@@ -69,7 +69,7 @@ internal enum class ShootingMode {
      * Continuous shooting
      */
     @SerialName("continuous")
-    CONTINUOUS_SHOOTING,
+    CONTINUOUS_SHOOTING
 
     //MOVIE_SHOOTING("")
 }
@@ -119,7 +119,7 @@ internal data class StartCaptureResponse(
      *
      * For RICOH THETA X v2.61.0 or later
      */
-    val _fileUrls: List<String>? = null,
+    val _fileUrls: List<String>? = null
 ) : CommandApiResponse
 
 /**
@@ -136,5 +136,5 @@ internal data class ResultStartCapture(
      * File URL.
      * For theta SC2 only.
      */
-    val fileUrl: String? = null,
+    val fileUrl: String? = null
 )

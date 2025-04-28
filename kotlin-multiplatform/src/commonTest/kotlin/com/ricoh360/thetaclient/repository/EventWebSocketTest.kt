@@ -5,11 +5,6 @@ import com.ricoh360.thetaclient.MockApiClient
 import com.ricoh360.thetaclient.ThetaRepository
 import com.ricoh360.thetaclient.websocket.CameraEvent
 import com.ricoh360.thetaclient.websocket.EventWebSocket
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeout
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -17,6 +12,11 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeout
 
 class EventWebSocketTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -250,5 +250,4 @@ class EventWebSocketTest {
         assertEquals(onReceiveCalled, 0)
         assertEquals(onCloseCalled, 0)
     }
-
 }

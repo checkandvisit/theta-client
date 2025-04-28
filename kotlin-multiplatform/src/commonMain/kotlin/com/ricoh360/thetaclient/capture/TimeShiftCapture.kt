@@ -18,7 +18,7 @@ import kotlinx.coroutines.*
 class TimeShiftCapture private constructor(
     private val endpoint: String,
     options: Options,
-    private val checkStatusCommandInterval: Long,
+    private val checkStatusCommandInterval: Long
 ) : Capture(options) {
 
     private val scope = CoroutineScope(Dispatchers.Default)
@@ -32,7 +32,6 @@ class TimeShiftCapture private constructor(
      * @return ThetaRepository.TimeShiftSetting
      */
     fun getTimeShiftSetting() = options._timeShift?.let { ThetaRepository.TimeShiftSetting(it) }
-
 
     // TODO: Add get photo option property
 
@@ -195,7 +194,7 @@ class TimeShiftCapture private constructor(
      */
     class Builder internal constructor(
         private val endpoint: String,
-        private val cameraModel: ThetaRepository.ThetaModel? = null,
+        private val cameraModel: ThetaRepository.ThetaModel? = null
     ) : Capture.Builder<Builder>() {
         private var interval: Long? = null
 
@@ -221,7 +220,7 @@ class TimeShiftCapture private constructor(
                             firstInterval = SC2B_DEFAULT_FIRST_INTERVAL,
                             secondInterval = SC2B_DEFAULT_SECOND_INTERVAL
                         ),
-                        exposureDelay = SC2B_DEFAULT_EXPOSURE_DELAY, // without this option, sometimes shooting is normal but time-shift
+                        exposureDelay = SC2B_DEFAULT_EXPOSURE_DELAY // without this option, sometimes shooting is normal but time-shift
                     )
 
                     else -> Options(captureMode = CaptureMode.IMAGE)

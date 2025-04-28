@@ -29,7 +29,7 @@ internal fun md5(data: String): String {
 internal suspend fun <T> syncExecutor(
     scope: CoroutineScope,
     timeout: Long,
-    run: suspend () -> T,
+    run: suspend () -> T
 ): T {
     val deferred = CompletableDeferred<T>()
     scope.launch {

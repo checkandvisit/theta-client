@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class SetPluginOrdersRequest(
     override val name: String = "camera._setPluginOrders",
-    override val parameters: SetPluginOrdersParams,
+    override val parameters: SetPluginOrdersParams
 ) : CommandApiRequest
 
 /**
@@ -23,7 +23,7 @@ internal data class SetPluginOrdersParams(
      * When not specifying, set an empty string. If an empty string is placed mid-way, it will be moved to the front.
      * Specifying zero package name will result in an error.
      */
-    val pluginOrders: List<String>,
+    val pluginOrders: List<String>
 )
 
 /**
@@ -64,6 +64,6 @@ internal data class SetPluginOrdersResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 
-    ) : CommandApiResponse
+) : CommandApiResponse

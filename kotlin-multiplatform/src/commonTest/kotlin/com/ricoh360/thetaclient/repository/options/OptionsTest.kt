@@ -70,7 +70,7 @@ class OptionsTest {
         val autoBracket = ThetaRepository.BracketSettingList().add(
             ThetaRepository.BracketSetting(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             )
         ).add(
             ThetaRepository.BracketSetting(
@@ -79,7 +79,7 @@ class OptionsTest {
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 iso = ThetaRepository.IsoEnum.ISO_800,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
             )
         )
         val bitrate = ThetaRepository.BitrateEnum.FINE
@@ -217,7 +217,7 @@ class OptionsTest {
             visibilityReduction = visibilityReduction,
             whiteBalance = whiteBalance,
             whiteBalanceAutoStrength = whiteBalanceAutoStrength,
-            wlanFrequency = wlanFrequency,
+            wlanFrequency = wlanFrequency
         )
 
         ThetaRepository.OptionNameEnum.values().forEach {
@@ -239,7 +239,11 @@ class OptionsTest {
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.CaptureMode), captureMode, "captureMode")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.CaptureNumber), captureNumber, "captureNumber")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.ColorTemperature), colorTemperature, "colorTemperature")
-        assertEquals(options.getValue(ThetaRepository.OptionNameEnum.CompositeShootingOutputInterval), compositeShootingOutputInterval, "compositeShootingOutputInterval")
+        assertEquals(
+            options.getValue(ThetaRepository.OptionNameEnum.CompositeShootingOutputInterval),
+            compositeShootingOutputInterval,
+            "compositeShootingOutputInterval"
+        )
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.CompositeShootingTime), compositeShootingTime, "compositeShootingTime")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.ContinuousNumber), continuousNumber, "continuousNumber")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.DateTimeZone), dateTimeZone, "dateTimeZone")
@@ -258,7 +262,11 @@ class OptionsTest {
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.Iso), iso, "iso")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.IsoAutoHighLimit), isoAutoHighLimit, "isoAutoHighLimit")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.Language), language, "language")
-        assertEquals(options.getValue(ThetaRepository.OptionNameEnum.LatestEnabledExposureDelayTime), latestEnabledExposureDelayTime, "latestEnabledExposureDelayTime")
+        assertEquals(
+            options.getValue(ThetaRepository.OptionNameEnum.LatestEnabledExposureDelayTime),
+            latestEnabledExposureDelayTime,
+            "latestEnabledExposureDelayTime"
+        )
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.MaxRecordableTime), maxRecordableTime, "maxRecordableTime")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.NetworkType), networkType, "networkType")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.OffDelay), offDelay, "offDelay")
@@ -276,13 +284,21 @@ class OptionsTest {
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.SleepDelay), sleepDelay, "sleepDelay")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.TimeShift), timeShift, "timeShift")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.TopBottomCorrection), topBottomCorrection, "topBottomCorrection")
-        assertEquals(options.getValue(ThetaRepository.OptionNameEnum.TopBottomCorrectionRotation), topBottomCorrectionRotation, "topBottomCorrectionRotation")
+        assertEquals(
+            options.getValue(ThetaRepository.OptionNameEnum.TopBottomCorrectionRotation),
+            topBottomCorrectionRotation,
+            "topBottomCorrectionRotation"
+        )
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.TotalSpace), totalSpace, "totalSpace")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.Username), username, "userName")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.VideoStitching), videoStitching, "videoStitching")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.VisibilityReduction), visibilityReduction, "visibilityReduction")
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.WhiteBalance), whiteBalance, "whiteBalance")
-        assertEquals(options.getValue(ThetaRepository.OptionNameEnum.WhiteBalanceAutoStrength), whiteBalanceAutoStrength, "whiteBalanceAutoStrength")
+        assertEquals(
+            options.getValue(ThetaRepository.OptionNameEnum.WhiteBalanceAutoStrength),
+            whiteBalanceAutoStrength,
+            "whiteBalanceAutoStrength"
+        )
         assertEquals(options.getValue(ThetaRepository.OptionNameEnum.WlanFrequency), wlanFrequency, "wlanFrequency")
     }
 
@@ -299,7 +315,7 @@ class OptionsTest {
                 ThetaRepository.BracketSettingList().add(
                     ThetaRepository.BracketSetting(
                         exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                        whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                        whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                     )
                 ).add(
                     ThetaRepository.BracketSetting(
@@ -308,7 +324,7 @@ class OptionsTest {
                         exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                         iso = ThetaRepository.IsoEnum.ISO_800,
                         shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                        whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                        whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
                     )
                 )
             ),
@@ -317,7 +333,8 @@ class OptionsTest {
             Pair(ThetaRepository.OptionNameEnum.BluetoothRole, ThetaRepository.BluetoothRoleEnum.CENTRAL),
             Pair(ThetaRepository.OptionNameEnum.BurstMode, ThetaRepository.BurstModeEnum.ON),
             Pair(
-                ThetaRepository.OptionNameEnum.BurstOption, ThetaRepository.BurstOption(
+                ThetaRepository.OptionNameEnum.BurstOption,
+                ThetaRepository.BurstOption(
                     burstCaptureNum = ThetaRepository.BurstCaptureNumEnum.BURST_CAPTURE_NUM_1,
                     burstBracketStep = ThetaRepository.BurstBracketStepEnum.BRACKET_STEP_0_0,
                     burstCompensation = ThetaRepository.BurstCompensationEnum.BURST_COMPENSATION_0_0,
@@ -378,17 +395,24 @@ class OptionsTest {
             Pair(ThetaRepository.OptionNameEnum.SleepDelay, ThetaRepository.SleepDelayEnum.SLEEP_DELAY_3M),
             Pair(
                 ThetaRepository.OptionNameEnum.TimeShift,
-                ThetaRepository.TimeShiftSetting(true, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_2, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_3)
+                ThetaRepository.TimeShiftSetting(
+                    true,
+                    ThetaRepository.TimeShiftIntervalEnum.INTERVAL_2,
+                    ThetaRepository.TimeShiftIntervalEnum.INTERVAL_3
+                )
             ),
             Pair(ThetaRepository.OptionNameEnum.TopBottomCorrection, ThetaRepository.TopBottomCorrectionOptionEnum.APPLY),
-            Pair(ThetaRepository.OptionNameEnum.TopBottomCorrectionRotation, ThetaRepository.TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f)),
+            Pair(
+                ThetaRepository.OptionNameEnum.TopBottomCorrectionRotation,
+                ThetaRepository.TopBottomCorrectionRotation(pitch = 1.0f, roll = 1.0f, yaw = 1.0f)
+            ),
             Pair(ThetaRepository.OptionNameEnum.TotalSpace, 104L),
             Pair(ThetaRepository.OptionNameEnum.Username, "username"),
             Pair(ThetaRepository.OptionNameEnum.VideoStitching, ThetaRepository.VideoStitchingEnum.NONE),
             Pair(ThetaRepository.OptionNameEnum.VisibilityReduction, ThetaRepository.VisibilityReductionEnum.OFF),
             Pair(ThetaRepository.OptionNameEnum.WhiteBalance, ThetaRepository.WhiteBalanceEnum.WARM_WHITE_FLUORESCENT),
             Pair(ThetaRepository.OptionNameEnum.WhiteBalanceAutoStrength, ThetaRepository.WhiteBalanceAutoStrengthEnum.ON),
-            Pair(ThetaRepository.OptionNameEnum.WlanFrequency, ThetaRepository.WlanFrequencyEnum.GHZ_5),
+            Pair(ThetaRepository.OptionNameEnum.WlanFrequency, ThetaRepository.WlanFrequencyEnum.GHZ_5)
         )
         val options = ThetaRepository.Options()
         values.forEach {
@@ -409,7 +433,8 @@ class OptionsTest {
         val aperture = Pair(2.1f, ThetaRepository.ApertureEnum.APERTURE_2_1)
         val autoBracket = Pair(
             AutoBracket(
-                2, listOf(
+                2,
+                listOf(
                     BracketParameter(exposureProgram = 2, whiteBalance = WhiteBalance.DAYLIGHT),
                     BracketParameter(
                         aperture = 2.0F,
@@ -417,14 +442,14 @@ class OptionsTest {
                         exposureProgram = 1,
                         iso = 800,
                         shutterSpeed = 0.01,
-                        whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT,
+                        whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT
                     )
                 )
             ),
             ThetaRepository.BracketSettingList().add(
                 ThetaRepository.BracketSetting(
                     exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                    whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                    whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                 )
             ).add(
                 ThetaRepository.BracketSetting(
@@ -433,7 +458,7 @@ class OptionsTest {
                     exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                     iso = ThetaRepository.IsoEnum.ISO_800,
                     shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                    whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                    whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
                 )
             )
         )
@@ -449,7 +474,8 @@ class OptionsTest {
                 _burstMaxExposureTime = BurstMaxExposureTime.MAX_EXPOSURE_TIME_15,
                 _burstEnableIsoControl = BurstEnableIsoControl.OFF,
                 _burstOrder = BurstOrder.BURST_BRACKET_ORDER_0
-            ), ThetaRepository.BurstOption(
+            ),
+            ThetaRepository.BurstOption(
                 burstCaptureNum = ThetaRepository.BurstCaptureNumEnum.BURST_CAPTURE_NUM_1,
                 burstBracketStep = ThetaRepository.BurstBracketStepEnum.BRACKET_STEP_0_0,
                 burstCompensation = ThetaRepository.BurstCompensationEnum.BURST_COMPENSATION_0_0,
@@ -519,10 +545,17 @@ class OptionsTest {
         val sleepDelay = Pair(180, ThetaRepository.SleepDelayEnum.SLEEP_DELAY_3M)
         val timeShift = Pair(
             TimeShift(FirstShootingEnum.FRONT, 4, 5),
-            ThetaRepository.TimeShiftSetting(true, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_4, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_5)
+            ThetaRepository.TimeShiftSetting(
+                true,
+                ThetaRepository.TimeShiftIntervalEnum.INTERVAL_4,
+                ThetaRepository.TimeShiftIntervalEnum.INTERVAL_5
+            )
         )
         val topBottomCorrection = Pair(TopBottomCorrectionOption.DISAPPLY, ThetaRepository.TopBottomCorrectionOptionEnum.DISAPPLY)
-        val topBottomCorrectionRotation = Pair(TopBottomCorrectionRotation(3.0f, 2.0f, 1.0f), ThetaRepository.TopBottomCorrectionRotation(3.0f, 2.0f, 1.0f))
+        val topBottomCorrectionRotation = Pair(
+            TopBottomCorrectionRotation(3.0f, 2.0f, 1.0f),
+            ThetaRepository.TopBottomCorrectionRotation(3.0f, 2.0f, 1.0f)
+        )
         val totalSpace = Pair(104L, 104L)
         val username = Pair("username", "username")
         val videoStitching = Pair(VideoStitching.NONE, ThetaRepository.VideoStitchingEnum.NONE)
@@ -658,7 +691,8 @@ class OptionsTest {
         val aperture = Pair(2.1f, ThetaRepository.ApertureEnum.APERTURE_2_1)
         val autoBracket = Pair(
             AutoBracket(
-                2, listOf(
+                2,
+                listOf(
                     BracketParameter(exposureProgram = 2, whiteBalance = WhiteBalance.DAYLIGHT),
                     BracketParameter(
                         aperture = 2.0F,
@@ -666,14 +700,14 @@ class OptionsTest {
                         exposureProgram = 1,
                         iso = 800,
                         shutterSpeed = 0.01,
-                        whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT,
+                        whiteBalance = WhiteBalance.CLOUDY_DAYLIGHT
                     )
                 )
             ),
             ThetaRepository.BracketSettingList().add(
                 ThetaRepository.BracketSetting(
                     exposureProgram = ThetaRepository.ExposureProgramEnum.NORMAL_PROGRAM,
-                    whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                    whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                 )
             ).add(
                 ThetaRepository.BracketSetting(
@@ -682,7 +716,7 @@ class OptionsTest {
                     exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                     iso = ThetaRepository.IsoEnum.ISO_800,
                     shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
-                    whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                    whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
                 )
             )
         )
@@ -698,7 +732,8 @@ class OptionsTest {
                 _burstMaxExposureTime = BurstMaxExposureTime.MAX_EXPOSURE_TIME_15,
                 _burstEnableIsoControl = BurstEnableIsoControl.OFF,
                 _burstOrder = BurstOrder.BURST_BRACKET_ORDER_0
-            ), ThetaRepository.BurstOption(
+            ),
+            ThetaRepository.BurstOption(
                 burstCaptureNum = ThetaRepository.BurstCaptureNumEnum.BURST_CAPTURE_NUM_1,
                 burstBracketStep = ThetaRepository.BurstBracketStepEnum.BRACKET_STEP_0_0,
                 burstCompensation = ThetaRepository.BurstCompensationEnum.BURST_COMPENSATION_0_0,
@@ -771,10 +806,17 @@ class OptionsTest {
         val sleepDelay = Pair(180, ThetaRepository.SleepDelayEnum.SLEEP_DELAY_3M)
         val timeShift = Pair(
             TimeShift(FirstShootingEnum.REAR, 6, 7),
-            ThetaRepository.TimeShiftSetting(false, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_6, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_7)
+            ThetaRepository.TimeShiftSetting(
+                false,
+                ThetaRepository.TimeShiftIntervalEnum.INTERVAL_6,
+                ThetaRepository.TimeShiftIntervalEnum.INTERVAL_7
+            )
         )
         val topBottomCorrection = Pair(TopBottomCorrectionOption.MANUAL, ThetaRepository.TopBottomCorrectionOptionEnum.MANUAL)
-        val topBottomCorrectionRotation = Pair(TopBottomCorrectionRotation(0.0f, 0.0f, 0.0f), ThetaRepository.TopBottomCorrectionRotation(0.0f, 0.0f, 0.0f))
+        val topBottomCorrectionRotation = Pair(
+            TopBottomCorrectionRotation(0.0f, 0.0f, 0.0f),
+            ThetaRepository.TopBottomCorrectionRotation(0.0f, 0.0f, 0.0f)
+        )
         val totalSpace = Pair(104L, 104L)
         val userName = Pair("username", "username")
         val videoStitching = Pair(VideoStitching.NONE, ThetaRepository.VideoStitchingEnum.NONE)

@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class ListPluginsRequest(
     override val name: String = "camera._listPlugins",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -49,7 +49,7 @@ internal data class ListPluginsResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -57,7 +57,7 @@ internal data class ListPluginsResponse(
  */
 @Serializable
 internal data class ResultListPlugins(
-    val plugins: List<Plugin>,
+    val plugins: List<Plugin>
 )
 
 @Serializable
@@ -120,5 +120,5 @@ internal data class Plugin(
     /**
      * Message
      */
-    val message: String,
+    val message: String
 )

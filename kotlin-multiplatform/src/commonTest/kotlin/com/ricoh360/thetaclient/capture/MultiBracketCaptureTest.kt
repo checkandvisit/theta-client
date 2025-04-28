@@ -9,16 +9,16 @@ import com.ricoh360.thetaclient.transferred.CaptureMode
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.TextContent
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeout
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeout
 
 class MultiBracketCaptureTest {
 
@@ -46,7 +46,7 @@ class MultiBracketCaptureTest {
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress_1.json").readText(),
-            Resource("src/commonTest/resources/MultiBracketCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/MultiBracketCapture/start_capture_done.json").readText()
         )
         val requestPathArray = arrayOf(
             "/osc/commands/execute",
@@ -54,7 +54,7 @@ class MultiBracketCaptureTest {
             "/osc/commands/execute",
             "/osc/commands/status",
             "/osc/commands/status",
-            "/osc/commands/status",
+            "/osc/commands/status"
         )
 
         val stateSelfTimer =
@@ -103,15 +103,15 @@ class MultiBracketCaptureTest {
             .setCheckStatusCommandInterval(100)
             .addBracketParameters(
                 colorTemperature = 5000,
-                exposureCompensation = ThetaRepository.ExposureCompensationEnum.M0_3,
+                exposureCompensation = ThetaRepository.ExposureCompensationEnum.M0_3
             ).addBracketParameters(
                 colorTemperature = 4000,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.CLOUDY_DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
                 iso = ThetaRepository.IsoEnum.ISO_800,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).build()
         ThetaApi.lastSetTimeConsumingOptionTime = 0
 
@@ -173,7 +173,7 @@ class MultiBracketCaptureTest {
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress_1.json").readText(),
-            Resource("src/commonTest/resources/MultiBracketCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/MultiBracketCapture/start_capture_done.json").readText()
         )
         val requestPathArray = arrayOf(
             "/osc/commands/execute",
@@ -181,7 +181,7 @@ class MultiBracketCaptureTest {
             "/osc/commands/execute",
             "/osc/commands/status",
             "/osc/commands/status",
-            "/osc/commands/status",
+            "/osc/commands/status"
         )
         val stateShooting =
             Resource("src/commonTest/resources/MultiBracketCapture/state_shooting.json").readText()
@@ -236,7 +236,7 @@ class MultiBracketCaptureTest {
                         exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                         shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
                         iso = ThetaRepository.IsoEnum.ISO_800,
-                        whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                        whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
                     )
                 )
             ).build()
@@ -291,7 +291,7 @@ class MultiBracketCaptureTest {
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/state_self_timer.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/state_shooting.json").readText(),
-            Resource("src/commonTest/resources/MultiBracketCapture/state_idle.json").readText(),
+            Resource("src/commonTest/resources/MultiBracketCapture/state_idle.json").readText()
         )
 
         var counter = 0
@@ -305,7 +305,6 @@ class MultiBracketCaptureTest {
                 2 -> {
                     CheckRequest.checkCommandName(request, "camera.startCapture")
                 }
-
             }
             val response =
                 if (index >= responseArray.size) responseArray[responseArray.size - 1] else responseArray[index]
@@ -320,11 +319,11 @@ class MultiBracketCaptureTest {
             .addBracketParameters(
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_100,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                colorTemperature = 5000,
+                colorTemperature = 5000
             ).addBracketParameters(
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_ONE_OVER_250,
                 iso = ThetaRepository.IsoEnum.ISO_200,
-                colorTemperature = 6000,
+                colorTemperature = 6000
             )
             .setCheckStatusCommandInterval(100)
             .build()
@@ -396,10 +395,11 @@ class MultiBracketCaptureTest {
                     if (!deferredStart.isCompleted) {
                         deferredStart.complete(Unit)
                     }
-                    if (isStop)
+                    if (isStop) {
                         "src/commonTest/resources/MultiBracketCapture/start_capture_done_stopped.json"
-                    else
+                    } else {
                         "src/commonTest/resources/MultiBracketCapture/start_capture_progress.json"
+                    }
                 }
             }
 
@@ -415,52 +415,52 @@ class MultiBracketCaptureTest {
             .setCheckStatusCommandInterval(100)
             .addBracketParameters(
                 colorTemperature = 5000,
-                exposureCompensation = ThetaRepository.ExposureCompensationEnum.M0_3,
+                exposureCompensation = ThetaRepository.ExposureCompensationEnum.M0_3
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).build()
         ThetaApi.lastSetTimeConsumingOptionTime = 0
 
@@ -514,7 +514,7 @@ class MultiBracketCaptureTest {
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/MultiBracketCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/MultiBracketCapture/start_capture_cancel.json").readText(),
+            Resource("src/commonTest/resources/MultiBracketCapture/start_capture_cancel.json").readText()
         )
         val stateShooting =
             Resource("src/commonTest/resources/MultiBracketCapture/state_shooting.json").readText()
@@ -537,12 +537,12 @@ class MultiBracketCaptureTest {
         val capture = thetaRepository.getMultiBracketCaptureBuilder()
             .addBracketParameters(
                 colorTemperature = 5000,
-                exposureCompensation = ThetaRepository.ExposureCompensationEnum.M0_3,
+                exposureCompensation = ThetaRepository.ExposureCompensationEnum.M0_3
             ).addBracketParameters(
                 exposureProgram = ThetaRepository.ExposureProgramEnum.MANUAL,
                 shutterSpeed = ThetaRepository.ShutterSpeedEnum.SHUTTER_SPEED_1,
                 iso = ThetaRepository.IsoEnum.ISO_100,
-                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT,
+                whiteBalance = ThetaRepository.WhiteBalanceEnum.DAYLIGHT
             ).setCheckStatusCommandInterval(100)
             .build()
         ThetaApi.lastSetTimeConsumingOptionTime = 0
@@ -593,7 +593,7 @@ class MultiBracketCaptureTest {
             ThetaRepository.ThetaModel.THETA_SC2_B to Pair(2, 13),
             ThetaRepository.ThetaModel.THETA_Z1 to Pair(2, 19),
             ThetaRepository.ThetaModel.THETA_X to Pair(2, 13),
-            null to Pair(0, 0)  // unsupported
+            null to Pair(0, 0) // unsupported
         )
 
         bracketNumbers.forEach { (key, value) ->
@@ -604,7 +604,7 @@ class MultiBracketCaptureTest {
 
             for (i in 1..builder.getMaxShots()) {
                 builder.addBracketParameters(
-                    colorTemperature = 5000,
+                    colorTemperature = 5000
                 )
             }
             try {

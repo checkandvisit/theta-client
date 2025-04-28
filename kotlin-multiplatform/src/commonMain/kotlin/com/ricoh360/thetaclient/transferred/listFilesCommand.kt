@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class ListFilesRequest(
     override val name: String = "camera.listFiles",
-    override val parameters: ListFilesParams,
+    override val parameters: ListFilesParams
 ) : CommandApiRequest
 
 /**
@@ -72,7 +72,7 @@ internal data class ListFilesParams(
      * Default is "Default".
      * (RICOH THETA X Version 2.00.0 or later)
      */
-    val _storage: Storage? = null,
+    val _storage: Storage? = null
 )
 
 /**
@@ -113,7 +113,7 @@ internal data class ListFilesResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -131,7 +131,7 @@ internal data class ResultListFiles(
      * camera
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val totalEntries: Int,
+    val totalEntries: Int
 )
 
 /**
@@ -266,7 +266,7 @@ internal data class CameraFileInfo(
      * Can be acquired when "_detail" is "true".
      * (RICOH THETA X Version 2.00.0 or later)
      */
-    val _storageID: String?,
+    val _storageID: String?
 ) {
     companion object {
         const val THUMBNAIL_QUERY = "?type=thumb"
@@ -298,7 +298,7 @@ internal enum class _ProjectionType {
      * Fisheye type
      */
     @SerialName("Fisheye")
-    FISHEYE,
+    FISHEYE
 }
 
 /**
@@ -322,7 +322,7 @@ internal enum class FileType {
      * Movie
      */
     @SerialName("video")
-    VIDEO,
+    VIDEO
 }
 
 /**
@@ -340,7 +340,7 @@ internal enum class SortOrder {
      * oldest order
      */
     @SerialName("oldest")
-    OLDEST,
+    OLDEST
 }
 
 /**
@@ -364,5 +364,5 @@ internal enum class Storage {
      * current storage
      */
     @SerialName("Default")
-    DEFAULT,
+    DEFAULT
 }

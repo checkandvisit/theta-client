@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class GetMetadataRequest(
     override val name: String = "camera._getMetadata",
-    override val parameters: GetMetadataParams,
+    override val parameters: GetMetadataParams
 ) : CommandApiRequest
 
 /**
@@ -23,7 +23,7 @@ internal data class GetMetadataParams(
     /**
      * JPEG file ID
      */
-    val fileUrl: String,
+    val fileUrl: String
 )
 
 /**
@@ -64,7 +64,7 @@ internal data class GetMetadataResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -80,7 +80,7 @@ internal data class ResultGetMetadata(
     /**
      * Photo Sphere XMP information in JSON format
      */
-    val xmp: XmpInfo,
+    val xmp: XmpInfo
 )
 
 /**
@@ -230,7 +230,7 @@ internal data class ExifInfo(
     /**
      * Copyright
      */
-    val Copyright: String,
+    val Copyright: String
 )
 
 /**
@@ -292,7 +292,7 @@ internal data class XmpInfo(
      * Height (px) from the panoramic image of the actual image
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val CroppedAreaTopPixels: Int,
+    val CroppedAreaTopPixels: Int
 )
 
 /**
@@ -304,5 +304,5 @@ internal enum class ProjectionType {
      * equirectangular
      */
     @SerialName("equirectangular")
-    EQUIRECTANGULAR,
+    EQUIRECTANGULAR
 }

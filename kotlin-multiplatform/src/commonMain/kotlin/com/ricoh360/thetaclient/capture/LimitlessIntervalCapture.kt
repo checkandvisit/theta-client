@@ -140,7 +140,6 @@ class LimitlessIntervalCapture private constructor(
             override fun onCaptureCompleted(fileUrls: List<String>?) {
                 callOnCaptureCompleted(fileUrls)
             }
-
         }
         scope.launch {
             try {
@@ -164,7 +163,6 @@ class LimitlessIntervalCapture private constructor(
             }
 
             captureStatusMonitor?.start()
-
         }
         return LimitlessIntervalCapturing(
             endpoint = endpoint,
@@ -201,8 +199,9 @@ class LimitlessIntervalCapture private constructor(
 
                 options.captureNumber = 0 // Unlimited (_limitless)
                 when (cameraModel) {
-                    ThetaRepository.ThetaModel.THETA_X -> options._shootingMethod =
-                        ShootingMethod.INTERVAL
+                    ThetaRepository.ThetaModel.THETA_X ->
+                        options._shootingMethod =
+                            ShootingMethod.INTERVAL
 
                     else -> {}
                 }

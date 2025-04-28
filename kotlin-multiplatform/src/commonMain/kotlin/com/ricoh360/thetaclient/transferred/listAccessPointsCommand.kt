@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class ListAccessPointsRequest(
     override val name: String = "camera._listAccessPoints",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -53,7 +53,7 @@ internal data class ListAccessPointsResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -66,7 +66,7 @@ internal data class ResultListAccessPoints(
      * points detected by the camera.  See the next section for
      * details.
      */
-    val accessPoints: List<AccessPoint>,
+    val accessPoints: List<AccessPoint>
 )
 
 /**
@@ -127,7 +127,7 @@ internal data class AccessPoint(
      * THETA X Version 2.00.0 or later
      */
     @SerialName("_proxy")
-    val proxy: Proxy? = null,
+    val proxy: Proxy? = null
 )
 
 /**
@@ -151,7 +151,7 @@ internal enum class AuthenticationMode {
      * WPA or WPA2 PSK authentication
      */
     @SerialName("WPA/WPA2 PSK")
-    WPA_WPA2_PSK,
+    WPA_WPA2_PSK
 }
 
 /**
@@ -169,5 +169,5 @@ internal enum class IpAddressAllocation {
      * static ip address allocation
      */
     @SerialName("static")
-    STATIC,
+    STATIC
 }

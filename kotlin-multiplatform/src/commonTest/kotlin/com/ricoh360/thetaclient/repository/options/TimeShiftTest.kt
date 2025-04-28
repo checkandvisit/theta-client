@@ -9,13 +9,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.TimeShift
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TimeShiftTest {
@@ -103,7 +103,11 @@ class TimeShiftTest {
         val values = listOf(
             Pair(ThetaRepository.TimeShiftSetting(), TimeShift()),
             Pair(
-                ThetaRepository.TimeShiftSetting(null, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_0, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_1),
+                ThetaRepository.TimeShiftSetting(
+                    null,
+                    ThetaRepository.TimeShiftIntervalEnum.INTERVAL_0,
+                    ThetaRepository.TimeShiftIntervalEnum.INTERVAL_1
+                ),
                 TimeShift(null, 0, 1)
             ),
             Pair(
@@ -113,7 +117,7 @@ class TimeShiftTest {
             Pair(
                 ThetaRepository.TimeShiftSetting(false, ThetaRepository.TimeShiftIntervalEnum.INTERVAL_10, null),
                 TimeShift(FirstShootingEnum.REAR, 10, null)
-            ),
+            )
         )
 
         values.forEach {

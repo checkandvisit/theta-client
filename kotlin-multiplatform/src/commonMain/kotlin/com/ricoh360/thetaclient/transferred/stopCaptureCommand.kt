@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class StopCaptureRequest(
     override val name: String = "camera.stopCapture",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -52,7 +52,7 @@ internal data class StopCaptureResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -68,5 +68,5 @@ internal data class ResultStopCapture(
      * File URL
      * For SC2
      */
-    val fileUrl: String? = null,
+    val fileUrl: String? = null
 )

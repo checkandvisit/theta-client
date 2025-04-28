@@ -8,12 +8,12 @@ import com.ricoh360.thetaclient.transferred.NetworkType
 import com.ricoh360.thetaclient.transferred.Options
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class NetworkTypeTest {
@@ -83,7 +83,7 @@ class NetworkTypeTest {
             Pair(ThetaRepository.NetworkTypeEnum.CLIENT, NetworkType.CLIENT),
             Pair(ThetaRepository.NetworkTypeEnum.DIRECT, NetworkType.DIRECT),
             Pair(ThetaRepository.NetworkTypeEnum.ETHERNET, NetworkType.ETHERNET),
-            Pair(ThetaRepository.NetworkTypeEnum.OFF, NetworkType.OFF),
+            Pair(ThetaRepository.NetworkTypeEnum.OFF, NetworkType.OFF)
         )
 
         values.forEach {

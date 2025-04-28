@@ -8,11 +8,11 @@ import com.ricoh360.thetaclient.transferred.CameraPower
 import com.ricoh360.thetaclient.transferred.Options
 import io.ktor.http.HttpStatusCode
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class CameraPowerTest {
     private val endpoint = "http://192.168.1.1:80/"
@@ -106,7 +106,7 @@ class CameraPowerTest {
             Pair(ThetaRepository.CameraPowerEnum.ON, CameraPower.ON),
             Pair(ThetaRepository.CameraPowerEnum.OFF, CameraPower.OFF),
             Pair(ThetaRepository.CameraPowerEnum.POWER_SAVING, CameraPower.POWER_SAVING),
-            Pair(ThetaRepository.CameraPowerEnum.SILENT_MODE, CameraPower.SILENT_MODE),
+            Pair(ThetaRepository.CameraPowerEnum.SILENT_MODE, CameraPower.SILENT_MODE)
         )
 
         values.forEach {

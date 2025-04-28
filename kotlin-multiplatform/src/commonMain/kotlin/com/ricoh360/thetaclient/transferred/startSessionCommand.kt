@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal data class StartSessionRequest(
     override val name: String = "camera.startSession",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -52,7 +52,7 @@ internal data class StartSessionResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -68,5 +68,5 @@ internal data class ResultStartSession(
     /**
      * timeout value
      */
-    val timeout: Int,
+    val timeout: Int
 )

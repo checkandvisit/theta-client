@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonElement
 @Serializable
 internal data class ResetRequest(
     override val name: String = "camera.reset",
-    override val parameters: EmptyParameter = EmptyParameter(),
+    override val parameters: EmptyParameter = EmptyParameter()
 ) : CommandApiRequest
 
 /**
@@ -53,5 +53,5 @@ internal data class ResetResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse

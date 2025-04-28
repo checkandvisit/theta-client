@@ -8,13 +8,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.VisibilityReduction
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class VisibilityReductionTest {
@@ -89,7 +89,7 @@ class VisibilityReductionTest {
     fun convertOptionVisibilityReductionTest() = runTest {
         val values = listOf(
             Pair(ThetaRepository.VisibilityReductionEnum.ON, VisibilityReduction.ON),
-            Pair(ThetaRepository.VisibilityReductionEnum.OFF, VisibilityReduction.OFF),
+            Pair(ThetaRepository.VisibilityReductionEnum.OFF, VisibilityReduction.OFF)
         )
 
         values.forEach {

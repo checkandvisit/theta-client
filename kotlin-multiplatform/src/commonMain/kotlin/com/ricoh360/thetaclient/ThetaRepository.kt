@@ -9,13 +9,13 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.serialization.*
 import io.ktor.utils.io.core.*
+import kotlin.reflect.KClass
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import kotlin.reflect.KClass
 
 /**
  * Repository to handle Theta web APIs.
@@ -39,7 +39,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         /**
          * Authentication information used for client mode connections
          */
-        var clientMode: DigestAuth? = null,
+        var clientMode: DigestAuth? = null
     ) {
         constructor() : this(
             dateTime = null,
@@ -47,7 +47,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             offDelay = null,
             sleepDelay = null,
             shutterVolume = null,
-            clientMode = null,
+            clientMode = null
         )
 
         /**
@@ -373,7 +373,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
                     THETA_S,
                     THETA_SC,
                     THETA_SC2,
-                    THETA_SC2_B,
+                    THETA_SC2_B
                 ).contains(model)
             }
         }
@@ -464,7 +464,13 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
      * @exception NotConnectedException
      */
     @Throws(Throwable::class)
-    suspend fun updateFirmware(apiPath: String, filePaths: List<String>, connectionTimeout: Long = 20_000L, socketTimeout: Long = 600_000L, callback: ((Int) -> Unit)? = null) {
+    suspend fun updateFirmware(
+        apiPath: String,
+        filePaths: List<String>,
+        connectionTimeout: Long = 20_000L,
+        socketTimeout: Long = 600_000L,
+        callback: ((Int) -> Unit)? = null
+    ) {
         try {
             val response = ThetaApi.callUpdateFirmwareApi(endpoint, apiPath, filePaths, connectionTimeout, socketTimeout, callback)
             response.error?.let {
@@ -501,14 +507,14 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         fileType: FileTypeEnum,
         startPosition: Int = 0,
         entryCount: Int,
-        storage: StorageEnum? = null,
+        storage: StorageEnum? = null
     ): ThetaFiles {
         try {
             val params = ListFilesParams(
                 fileType = fileType.value,
                 startPosition = startPosition,
                 entryCount = entryCount,
-                _storage = storage?.value,
+                _storage = storage?.value
             )
             val listFilesResponse = ThetaApi.callListFilesCommand(endpoint, params)
             listFilesResponse.error?.let {
@@ -548,7 +554,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
     suspend fun listFiles(
         fileType: FileTypeEnum,
         startPosition: Int = 0,
-        entryCount: Int,
+        entryCount: Int
     ): ThetaFiles {
         return listFiles(fileType, startPosition, entryCount, null)
     }
@@ -562,7 +568,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
      */
     data class ThetaFiles(
         val fileList: List<FileInfo>,
-        val totalEntries: Int,
+        val totalEntries: Int
     )
 
     /**
@@ -1060,7 +1066,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          * Option name
          * _wlanFrequency
          */
-        WlanFrequency("_wlanFrequency", WlanFrequencyEnum::class),
+        WlanFrequency("_wlanFrequency", WlanFrequencyEnum::class)
     }
 
     /**
@@ -1473,7 +1479,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          *
          * For RICOH THETA X, Z1 and V.
          */
-        var wlanFrequency: WlanFrequencyEnum? = null,
+        var wlanFrequency: WlanFrequencyEnum? = null
     ) {
         constructor() : this(
             aiAutoThumbnail = null,
@@ -1535,7 +1541,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             visibilityReduction = null,
             whiteBalance = null,
             whiteBalanceAutoStrength = null,
-            wlanFrequency = null,
+            wlanFrequency = null
         )
 
         internal constructor(options: com.ricoh360.thetaclient.transferred.Options) : this(
@@ -1602,7 +1608,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             visibilityReduction = options._visibilityReduction?.let { VisibilityReductionEnum.get(it) },
             whiteBalance = options.whiteBalance?.let { WhiteBalanceEnum.get(it) },
             whiteBalanceAutoStrength = options._whiteBalanceAutoStrength?.let { WhiteBalanceAutoStrengthEnum.get(it) },
-            wlanFrequency = options._wlanFrequency?.let { WlanFrequencyEnum.get(it) },
+            wlanFrequency = options._wlanFrequency?.let { WlanFrequencyEnum.get(it) }
         )
 
         /**
@@ -1670,7 +1676,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
                 _visibilityReduction = visibilityReduction?.value,
                 whiteBalance = whiteBalance?.value,
                 _whiteBalanceAutoStrength = whiteBalanceAutoStrength?.value,
-                _wlanFrequency = wlanFrequency?.value,
+                _wlanFrequency = wlanFrequency?.value
             )
         }
 
@@ -2037,7 +2043,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          * Mandatory to Theta Z1 and V.
          * Theta SC2 does not support.
          */
-        var whiteBalance: WhiteBalanceEnum? = null,
+        var whiteBalance: WhiteBalanceEnum? = null
     )
 
     /**
@@ -2846,7 +2852,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          * If camera.getOptions returns the number other than 0 to 20, this value is set.
          * Do not use this value to setOptions().
          */
-        UNSUPPORTED(-1),
+        UNSUPPORTED(-1)
         ;
 
         companion object {
@@ -2898,14 +2904,14 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          * - (use = true, url = {url}, port = {port})
          * - (use = true, url = {url}, port = {port}, userid = {userid}, password = {password})
          */
-        val proxy: Proxy? = null,
+        val proxy: Proxy? = null
     ) {
         internal constructor(config: com.ricoh360.thetaclient.transferred.EthernetConfig) : this(
             usingDhcp = config.ipAddressAllocation == IpAddressAllocation.DYNAMIC,
             ipAddress = config.ipAddress,
             subnetMask = config.subnetMask,
             defaultGateway = config.defaultGateway,
-            proxy = config._proxy?.let { Proxy(info = it) },
+            proxy = config._proxy?.let { Proxy(info = it) }
         )
 
         /**
@@ -3649,13 +3655,12 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
              */
             @OptIn(ExperimentalSerializationApi::class)
             internal fun get(mediaFileFormat: MediaFileFormat): FileFormatEnum {
-
                 entries.firstOrNull {
                     it.type.mediaType == mediaFileFormat.type &&
-                            it.width == mediaFileFormat.width &&
-                            it.height == mediaFileFormat.height &&
-                            it._codec == mediaFileFormat._codec &&
-                            it._frameRate == mediaFileFormat._frameRate
+                        it.width == mediaFileFormat.width &&
+                        it.height == mediaFileFormat.height &&
+                        it._codec == mediaFileFormat._codec &&
+                        it._frameRate == mediaFileFormat._frameRate
                 }?.let {
                     return it
                 }
@@ -5082,8 +5087,8 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             internal fun get(value: PreviewFormat): PreviewFormatEnum? {
                 return PreviewFormatEnum.values().firstOrNull {
                     it.height == value.height &&
-                            it.width == value.width &&
-                            it.framerate == value.framerate
+                        it.width == value.width &&
+                        it.framerate == value.framerate
                 }
             }
         }
@@ -5119,7 +5124,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         /**
          * Password used for proxy authentication
          */
-        val password: String? = null,
+        val password: String? = null
     ) {
         constructor(use: Boolean) : this(
             use = use,
@@ -5730,7 +5735,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          * Time from 1st lens shooting until start of 2nd lens shooting.
          * Default is 5 seconds.
          */
-        var secondInterval: TimeShiftIntervalEnum? = null,
+        var secondInterval: TimeShiftIntervalEnum? = null
     ) {
         internal constructor(timeShift: TimeShift) : this(
             isFrontFirst = timeShift.firstShooting?.let {
@@ -5741,9 +5746,8 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             },
             secondInterval = timeShift.secondInterval?.let {
                 TimeShiftIntervalEnum.get(it)
-            },
+            }
         )
-
 
         /**
          * Convert TimeShiftSetting to transferred.TimeShift. for ThetaApi.
@@ -5756,7 +5760,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
                     if (it) FirstShootingEnum.FRONT else FirstShootingEnum.REAR
                 },
                 firstInterval = firstInterval?.sec,
-                secondInterval = secondInterval?.sec,
+                secondInterval = secondInterval?.sec
             )
         }
     }
@@ -6135,13 +6139,12 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
              * Convert WlanFrequency to WlanFrequencyEnum
              *
              * @param value wlan frequency
-             * @return  WlanFrequencyEnum
+             * @return WlanFrequencyEnum
              */
             internal fun get(value: WlanFrequency): WlanFrequencyEnum? {
                 return values().firstOrNull { it.value == value }
             }
         }
-
     }
 
     /**
@@ -6187,7 +6190,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         /**
          * current storage
          */
-        CURRENT(Storage.DEFAULT),
+        CURRENT(Storage.DEFAULT)
     }
 
     /**
@@ -6207,7 +6210,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         /**
          * Fisheye type
          */
-        FISHEYE(_ProjectionType.FISHEYE),
+        FISHEYE(_ProjectionType.FISHEYE)
         ;
 
         companion object {
@@ -6230,7 +6233,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         /**
          * codec H.264/MPEG-4 AVC
          */
-        H264MP4AVC("H.264/MPEG-4 AVC"),
+        H264MP4AVC("H.264/MPEG-4 AVC")
         ;
 
         companion object {
@@ -6295,7 +6298,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         val frameRate: Int?,
         val favorite: Boolean?,
         val imageDescription: String?,
-        val storageID: String?,
+        val storageID: String?
     ) {
         internal constructor(cameraFileInfo: CameraFileInfo) : this(
             cameraFileInfo.name,
@@ -6320,7 +6323,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             cameraFileInfo._frameRate,
             cameraFileInfo._favorite,
             cameraFileInfo._imageDescription,
-            cameraFileInfo._storageID,
+            cameraFileInfo._storageID
         )
     }
 
@@ -6546,7 +6549,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         val uptime: Int,
         val api: List<String>,
         val endpoints: EndPoint,
-        val apiLevel: List<Int>,
+        val apiLevel: List<Int>
     ) {
         internal constructor(res: InfoApiResponse) : this(
             manufacturer = res.manufacturer,
@@ -6617,7 +6620,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         val externalGpsInfo: StateGpsInfo?,
         val internalGpsInfo: StateGpsInfo?,
         val boardTemp: Int?,
-        val batteryTemp: Int?,
+        val batteryTemp: Int?
     ) {
         internal constructor(fingerprint: String?, state: CameraState) : this(
             fingerprint,
@@ -6643,7 +6646,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             state._externalGpsInfo?.let { StateGpsInfo(it) },
             state._internalGpsInfo?.let { StateGpsInfo(it) },
             state._boardTemp,
-            state._batteryTemp,
+            state._batteryTemp
         )
 
         internal constructor(response: StateApiResponse) : this(
@@ -6715,7 +6718,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
          * Capture status
          * Performing burst shooting
          */
-        BURST_SHOOTING,
+        BURST_SHOOTING
         ;
 
         companion object {
@@ -7306,7 +7309,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         ipAddress: String? = null,
         subnetMask: String? = null,
         defaultGateway: String? = null,
-        proxy: Proxy? = null,
+        proxy: Proxy? = null
     ) {
         val params = SetAccessPointParams(
             ssid = ssid,
@@ -7354,7 +7357,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         authMode: AuthModeEnum = AuthModeEnum.NONE,
         password: String = "",
         connectionPriority: Int = 1,
-        proxy: Proxy? = null,
+        proxy: Proxy? = null
     ) {
         setAccessPoint(
             ssid = ssid,
@@ -7392,7 +7395,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         ipAddress: String,
         subnetMask: String,
         defaultGateway: String,
-        proxy: Proxy? = null,
+        proxy: Proxy? = null
     ) {
         setAccessPoint(
             ssid = ssid,
@@ -7456,7 +7459,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         val ipAddress: String?,
         val subnetMask: String?,
         val defaultGateway: String?,
-        val proxy: Proxy?,
+        val proxy: Proxy?
     ) {
         internal constructor(accessPoint: com.ricoh360.thetaclient.transferred.AccessPoint) : this(
             ssid = accessPoint.ssid,
@@ -7467,7 +7470,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             ipAddress = accessPoint.ipAddress,
             subnetMask = accessPoint.subnetMask,
             defaultGateway = accessPoint.defaultGateway,
-            proxy = accessPoint.proxy?.let { Proxy(info = it) },
+            proxy = accessPoint.proxy?.let { Proxy(info = it) }
         )
     }
 
@@ -7532,7 +7535,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         val isBoot: Boolean,
         val hasWebServer: Boolean,
         val exitStatus: String,
-        val message: String,
+        val message: String
     ) {
         internal constructor(plugin: Plugin) : this(
             name = plugin.pluginName,
@@ -7544,7 +7547,7 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
             isBoot = plugin.boot,
             hasWebServer = plugin.webServer,
             exitStatus = plugin.exitStatus,
-            message = plugin.message,
+            message = plugin.message
         )
     }
 
@@ -7851,7 +7854,9 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         if (cameraModel == ThetaModel.THETA_Z1) {
             when {
                 plugins.size > SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1 -> {
-                    throw ArgumentException("Argument list must have $SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1 or less elements for RICOH THETA Z1")
+                    throw ArgumentException(
+                        "Argument list must have $SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1 or less elements for RICOH THETA Z1"
+                    )
                 }
 
                 plugins.size < SIZE_OF_SET_PLUGIN_ORDERS_ARGUMENT_LIST_FOR_Z1 -> {
@@ -7916,7 +7921,6 @@ class ThetaRepository internal constructor(val endpoint: String, config: Config?
         return EventWebSocket(endpoint)
     }
 }
-
 
 /**
  * Check status interval for Command

@@ -18,7 +18,7 @@ class PhotoCapture private constructor(
     private val endpoint: String,
     options: Options,
     private val checkStatusCommandInterval: Long
-    ) : PhotoCaptureBase(options) {
+) : PhotoCaptureBase(options) {
 
     private val scope = CoroutineScope(Dispatchers.Default)
 
@@ -166,7 +166,7 @@ class PhotoCapture private constructor(
                 val modeOptions = when (cameraModel) {
                     ThetaRepository.ThetaModel.THETA_X -> Options(
                         captureMode = CaptureMode.IMAGE,
-                        _shootingMethod = ShootingMethod.NORMAL,
+                        _shootingMethod = ShootingMethod.NORMAL
                     )
 
                     else -> {
@@ -197,7 +197,7 @@ class PhotoCapture private constructor(
             return PhotoCapture(
                 endpoint = endpoint,
                 options = options,
-                checkStatusCommandInterval = interval ?: CHECK_COMMAND_STATUS_INTERVAL,
+                checkStatusCommandInterval = interval ?: CHECK_COMMAND_STATUS_INTERVAL
             )
         }
 

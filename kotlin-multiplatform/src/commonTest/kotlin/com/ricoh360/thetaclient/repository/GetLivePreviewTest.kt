@@ -4,12 +4,12 @@ import com.ricoh360.thetaclient.MockApiClient
 import com.ricoh360.thetaclient.PreviewClientException
 import com.ricoh360.thetaclient.ThetaRepository
 import io.ktor.client.network.sockets.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestResult
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetLivePreviewTest {

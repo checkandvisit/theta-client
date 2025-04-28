@@ -9,9 +9,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class BurstOptionTest {
@@ -69,7 +69,8 @@ class BurstOptionTest {
                 burstMaxExposureTime = ThetaRepository.BurstMaxExposureTimeEnum.MAX_EXPOSURE_TIME_15,
                 burstEnableIsoControl = ThetaRepository.BurstEnableIsoControlEnum.OFF,
                 burstOrder = ThetaRepository.BurstOrderEnum.BURST_BRACKET_ORDER_0
-            ), BurstOption(
+            ),
+            BurstOption(
                 _burstCaptureNum = BurstCaptureNum.BURST_CAPTURE_NUM_1,
                 _burstBracketStep = BurstBracketStep.BRACKET_STEP_0_0,
                 _burstCompensation = BurstCompensation.BURST_COMPENSATION_0_0,
@@ -386,7 +387,7 @@ class BurstOptionTest {
             Pair(
                 ThetaRepository.BurstOption(burstOrder = ThetaRepository.BurstOrderEnum.BURST_BRACKET_ORDER_1),
                 BurstOption(_burstOrder = BurstOrder.BURST_BRACKET_ORDER_1)
-            ),
+            )
         )
 
         values.forEach {

@@ -38,7 +38,7 @@ internal class MockWebSocketHttpClient : WebSocketHttpClient {
 }
 
 internal class MockWebSocketHttpSession(
-    val onCallClose: (() -> Unit)?,
+    val onCallClose: (() -> Unit)?
 ) : WebSocketHttpSession {
 
     var deferred: CompletableDeferred<String?>? = null

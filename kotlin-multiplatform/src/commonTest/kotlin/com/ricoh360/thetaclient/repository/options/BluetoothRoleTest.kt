@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class BluetoothRoleTest {
@@ -81,7 +81,7 @@ class BluetoothRoleTest {
         val values = listOf(
             Pair(ThetaRepository.BluetoothRoleEnum.CENTRAL, BluetoothRole.CENTRAL),
             Pair(ThetaRepository.BluetoothRoleEnum.PERIPHERAL, BluetoothRole.PERIPHERAL),
-            Pair(ThetaRepository.BluetoothRoleEnum.CENTRAL_PERIPHERAL, BluetoothRole.CENTRAL_PERIPHERAL),
+            Pair(ThetaRepository.BluetoothRoleEnum.CENTRAL_PERIPHERAL, BluetoothRole.CENTRAL_PERIPHERAL)
         )
 
         values.forEach {

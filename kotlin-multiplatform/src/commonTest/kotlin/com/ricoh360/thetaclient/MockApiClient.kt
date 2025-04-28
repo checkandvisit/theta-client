@@ -27,23 +27,23 @@ internal object MockApiClient {
     var useMock = true
     var onPreviewRequest: (
         (
-        endpoint: String,
-        method: String,
-        path: String,
-        body: String,
-        contentType: String
-    ) -> PreviewClient
+            endpoint: String,
+            method: String,
+            path: String,
+            body: String,
+            contentType: String
+        ) -> PreviewClient
     )? = null
     var onPreviewClose: (() -> Unit)? = null
     var onPreviewHasNextPart: (() -> Boolean)? = null
     var onPreviewNextPart: (() -> Pair<ByteArray, Int>)? = null
     var onMultipartPostRequest: (
         (
-        endpoint: String,
-        path: String,
-        filePaths: List<String>,
-        boundary: String
-    ) -> ByteArray
+            endpoint: String,
+            path: String,
+            filePaths: List<String>,
+            boundary: String
+        ) -> ByteArray
     )? = null
     var onCallWebSocketConnect: ((urlString: String) -> Unit)? = null
     var onCallWebSocketClose: (() -> Unit)? = null
@@ -114,7 +114,7 @@ internal object MockApiClient {
             connectionTimeout: Long,
             socketTimeout: Long,
             callback: ((Int) -> Unit)?,
-            boundary: String,
+            boundary: String
         ): ByteArray {
             onMultipartPostRequest?.let {
                 return it(endpoint, path, filePaths, boundary)

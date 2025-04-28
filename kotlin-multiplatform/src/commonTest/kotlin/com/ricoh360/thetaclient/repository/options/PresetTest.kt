@@ -8,13 +8,13 @@ import com.ricoh360.thetaclient.transferred.Options
 import com.ricoh360.thetaclient.transferred.Preset
 import io.ktor.http.*
 import io.ktor.utils.io.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class PresetTest {
@@ -91,7 +91,7 @@ class PresetTest {
             Pair(ThetaRepository.PresetEnum.ROOM, Preset.ROOM),
             Pair(ThetaRepository.PresetEnum.FACE, Preset.FACE),
             Pair(ThetaRepository.PresetEnum.NIGHT_VIEW, Preset.NIGHT_VIEW),
-            Pair(ThetaRepository.PresetEnum.LENS_BY_LENS_EXPOSURE, Preset.LENS_BY_LENS_EXPOSURE),
+            Pair(ThetaRepository.PresetEnum.LENS_BY_LENS_EXPOSURE, Preset.LENS_BY_LENS_EXPOSURE)
         )
 
         values.forEach {
@@ -110,5 +110,4 @@ class PresetTest {
             assertEquals(options._preset, it.second, "preset ${it.second}")
         }
     }
-
 }

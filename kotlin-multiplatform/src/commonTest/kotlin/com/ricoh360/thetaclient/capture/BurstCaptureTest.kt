@@ -18,16 +18,16 @@ import io.ktor.client.network.sockets.ConnectTimeoutException
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.TextContent
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeout
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeout
 
 class BurstCaptureTest {
     private val burstOption = BurstOption(
@@ -70,7 +70,7 @@ class BurstCaptureTest {
             Resource("src/commonTest/resources/BurstCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/BurstCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/BurstCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/BurstCapture/start_capture_done.json").readText(),
+            Resource("src/commonTest/resources/BurstCapture/start_capture_done.json").readText()
         )
         val stateShootingResponse =
             Resource("src/commonTest/resources/BurstCapture/state_burst_shooting.json").readText()
@@ -273,7 +273,7 @@ class BurstCaptureTest {
             Resource("src/commonTest/resources/setOptions/set_options_done.json").readText(),
             Resource("src/commonTest/resources/BurstCapture/start_capture_progress.json").readText(),
             Resource("src/commonTest/resources/BurstCapture/start_capture_progress.json").readText(),
-            Resource("src/commonTest/resources/BurstCapture/start_capture_cancel.json").readText(),
+            Resource("src/commonTest/resources/BurstCapture/start_capture_cancel.json").readText()
         )
         val stateShootingResponse =
             Resource("src/commonTest/resources/BurstCapture/state_burst_shooting.json").readText()
@@ -472,8 +472,8 @@ class BurstCaptureTest {
             ).build()
         } catch (e: ThetaRepository.ThetaWebApiException) {
             assertTrue(
-                (e.message?.indexOf("json", 0, true) ?: -1) >= 0
-                        || (e.message?.indexOf("Illegal", 0, true) ?: -1) >= 0,
+                (e.message?.indexOf("json", 0, true) ?: -1) >= 0 ||
+                    (e.message?.indexOf("Illegal", 0, true) ?: -1) >= 0,
                 "setOptions option not json error response"
             )
             exceptionNotJson = true
@@ -806,7 +806,8 @@ class BurstCaptureTest {
                         )
                         deferred.complete(Unit)
                     }
-                })
+                }
+            )
 
         capturing.cancelCapture()
 
@@ -841,7 +842,8 @@ class BurstCaptureTest {
                         )
                         deferred.complete(Unit)
                     }
-                })
+                }
+            )
 
         capturing.cancelCapture()
 
@@ -898,7 +900,8 @@ class BurstCaptureTest {
                     )
                     deferred.complete(Unit)
                 }
-            })
+            }
+        )
 
         capturing.cancelCapture()
 
@@ -931,7 +934,8 @@ class BurstCaptureTest {
                     )
                     deferred.complete(Unit)
                 }
-            })
+            }
+        )
 
         capturing.cancelCapture()
 
@@ -964,7 +968,8 @@ class BurstCaptureTest {
                     )
                     deferred.complete(Unit)
                 }
-            })
+            }
+        )
 
         capturing.cancelCapture()
 

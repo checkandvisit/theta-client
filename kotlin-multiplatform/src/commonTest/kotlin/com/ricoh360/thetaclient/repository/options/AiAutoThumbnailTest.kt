@@ -10,9 +10,9 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.utils.io.*
+import kotlin.test.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlin.test.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AiAutoThumbnailTest {
@@ -80,7 +80,7 @@ class AiAutoThumbnailTest {
     fun convertOptionAiAutoThumbnailTest() = runTest {
         val values = listOf(
             Pair(ThetaRepository.AiAutoThumbnailEnum.ON, AiAutoThumbnail.ON),
-            Pair(ThetaRepository.AiAutoThumbnailEnum.OFF, AiAutoThumbnail.OFF),
+            Pair(ThetaRepository.AiAutoThumbnailEnum.OFF, AiAutoThumbnail.OFF)
         )
 
         values.forEach {

@@ -19,7 +19,7 @@ import kotlinx.serialization.encoding.Encoder
 @Serializable
 internal data class SetOptionsRequest(
     override val name: String = "camera.setOptions",
-    override val parameters: SetOptionsParams,
+    override val parameters: SetOptionsParams
 ) : CommandApiRequest
 
 /**
@@ -35,7 +35,7 @@ internal data class SetOptionsParams(
     /**
      * Set of option names and setting values to be set in JSON format
      */
-    val options: Options,
+    val options: Options
 ) {
     constructor(options: Options) : this(null, options)
 }
@@ -78,7 +78,7 @@ internal data class SetOptionsResponse(
      * Progress information.  This output occurs in state
      * "inProgress"
      */
-    override val progress: CommandProgress? = null,
+    override val progress: CommandProgress? = null
 ) : CommandApiResponse
 
 /**
@@ -89,7 +89,7 @@ internal data class ResultSetOptions(
     /**
      * option key value pair
      */
-    val options: Options,
+    val options: Options
 )
 
 /**
@@ -815,7 +815,7 @@ internal data class Options(
     /**
      * Supported WlanFrequency
      */
-    var _wlanFrequencySupport: List<WlanFrequency>? = null,
+    var _wlanFrequencySupport: List<WlanFrequency>? = null
 )
 
 /**
@@ -836,7 +836,7 @@ internal data class AutoBracket(
     /**
      * Parameter array specified for multi bracket shooting.
      */
-    val _bracketParameters: List<BracketParameter>,
+    val _bracketParameters: List<BracketParameter>
 )
 
 /**
@@ -890,7 +890,7 @@ internal data class BracketParameter(
      * Mandatory to Theta Z1 and V.
      * Theta SC2 does not support.
      */
-    var whiteBalance: WhiteBalance? = null,
+    var whiteBalance: WhiteBalance? = null
 )
 
 /**
@@ -908,7 +908,7 @@ internal enum class BluetoothPower {
      * Power OFF status
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -932,7 +932,7 @@ internal enum class BluetoothRole {
      * Central: ON, Peripheral: ON
      */
     @SerialName("Central_Peripheral")
-    CENTRAL_PERIPHERAL,
+    CENTRAL_PERIPHERAL
 }
 
 /**
@@ -954,7 +954,7 @@ internal enum class BurstMode {
      * BurstMode OFF
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -1275,7 +1275,7 @@ internal enum class CameraControlSource {
      * the UI on the shooting screen on the camera.
      */
     @SerialName("app")
-    APP,
+    APP
 }
 
 /**
@@ -1308,7 +1308,7 @@ internal enum class CameraMode {
      * plugin selection screen
      */
     @SerialName("plugin")
-    PLUGIN,
+    PLUGIN
 }
 
 internal object CameraPowerSerializer :
@@ -1354,7 +1354,7 @@ internal enum class CameraPower : SerialNameEnum {
      */
     SILENT_MODE {
         override val serialName: String = "silentMode"
-    },
+    }
 }
 
 /**
@@ -1390,7 +1390,7 @@ internal enum class CaptureMode {
      * Preset mode of Theta SC2.
      */
     @SerialName("_preset")
-    PRESET,
+    PRESET
 }
 
 /**
@@ -1411,7 +1411,7 @@ internal enum class FaceDetect {
      * Face detection OFF
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -1441,7 +1441,7 @@ internal enum class Gain {
      * (RICOH THETA V firmware v2.50.1 or later, RICOH THETA X is not supported.)
      */
     @SerialName("mute")
-    MUTE,
+    MUTE
 }
 
 /**
@@ -1459,7 +1459,7 @@ internal enum class AiAutoThumbnail {
      * AI auto setting OFF
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -1491,7 +1491,7 @@ internal data class EthernetConfig(
     /**
      * (optional) refer to _proxy for detail
      */
-    val _proxy: Proxy? = null,
+    val _proxy: Proxy? = null
 )
 
 /**
@@ -1509,7 +1509,7 @@ internal enum class MicrophoneChannel {
      * Monaural
      */
     @SerialName("1ch")
-    MONAURAL,
+    MONAURAL
 }
 
 /**
@@ -1539,7 +1539,7 @@ internal enum class NetworkType {
      * Network is off. This value can be gotten only by plugin.
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -1555,7 +1555,7 @@ internal enum class PowerSaving {
     /**
      * Power saving mode OFF
      */
-    OFF,
+    OFF
 }
 
 /**
@@ -1618,7 +1618,7 @@ internal enum class ShootingMethod {
      * is not supported)
      */
     @SerialName("burst")
-    BURST,
+    BURST
 }
 
 /**
@@ -1664,7 +1664,7 @@ internal enum class Preset {
      * and rear lens making it possible for the photographer not to be captured in the image.
      */
     @SerialName("room")
-    ROOM,
+    ROOM
 }
 
 /**
@@ -1688,7 +1688,7 @@ internal data class PreviewFormat(
      * frame rate
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val framerate: Int? = null,
+    val framerate: Int? = null
 )
 
 /**
@@ -1727,7 +1727,7 @@ internal data class Proxy(
     /**
      * Password used for proxy authentication
      */
-    val password: String? = null,
+    val password: String? = null
 )
 
 /**
@@ -1756,7 +1756,7 @@ internal data class TimeShift(
      * 0 to 10.  Default is 5.
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    var secondInterval: Int? = null,
+    var secondInterval: Int? = null
 )
 
 /**
@@ -1774,7 +1774,7 @@ internal enum class FirstShootingEnum {
      * first shoot the rear side
      */
     @SerialName("rear")
-    REAR,
+    REAR
 }
 
 /**
@@ -1831,7 +1831,7 @@ internal enum class TopBottomCorrectionOption {
      * _topBottomCorrectionRotation.
      */
     @SerialName("Manual")
-    MANUAL,
+    MANUAL
 }
 
 /**
@@ -1934,7 +1934,7 @@ internal enum class WhiteBalance {
      * Underwater
      */
     @SerialName("_underwater")
-    _UNDERWATER,
+    _UNDERWATER
 }
 
 /**
@@ -1958,7 +1958,7 @@ internal enum class WhiteBalanceAutoStrength {
      * not correct tint for low color temperature scene
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -1974,7 +1974,7 @@ internal enum class WlanFrequency(val frequency: Double) {
     /**
      * 5GHz
      */
-    GHZ_5(5.0),
+    GHZ_5(5.0)
 }
 
 /**
@@ -2011,7 +2011,7 @@ internal enum class VisibilityReduction {
      * bottom direction.
      */
     @SerialName("OFF")
-    OFF,
+    OFF
 }
 
 /**
@@ -2031,7 +2031,7 @@ internal enum class VideoStitching {
      * Equirectangular format.
      */
     @SerialName("ondevice")
-    ONDEVICE,
+    ONDEVICE
 }
 
 /**
@@ -2091,7 +2091,7 @@ internal enum class Language {
      * Korean: ko
      */
     @SerialName("ko")
-    KO,
+    KO
 }
 
 /**
@@ -2109,7 +2109,7 @@ internal enum class GpsTagRecording {
      * Do not assign position information
      */
     @SerialName("off")
-    OFF,
+    OFF
 }
 
 /**
@@ -2178,7 +2178,7 @@ internal data class GpsInfo(
      * For RICOH THETA X, ON/OFF for assigning position information is
      * set at _gpsTagRecording
      */
-    val _datum: String? = null,
+    val _datum: String? = null
 )
 
 /**
@@ -2225,7 +2225,7 @@ internal enum class ImageFilter {
      *  and RICOH THETA V firmware v3.10.1 or later)
      */
     @SerialName("Hh hdr")
-    HH_HDR,
+    HH_HDR
 }
 
 internal object MediaTypeSerializer :
@@ -2248,7 +2248,6 @@ internal enum class MediaType : SerialNameEnum {
         override val serialName: String = "jpeg"
     },
 
-
     /**
      * mp4 video
      */
@@ -2261,7 +2260,7 @@ internal enum class MediaType : SerialNameEnum {
      */
     RAW {
         override val serialName: String = "raw+"
-    },
+    }
 }
 
 /**
@@ -2295,7 +2294,7 @@ internal data class MediaFileFormat(
      * frame rate (theta)
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val _frameRate: Int? = null,
+    val _frameRate: Int? = null
 )
 
 /**
@@ -2313,7 +2312,7 @@ internal data class ShutterVolumeSupport(
      * maximum shutter volume
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val maxShutterVolume: Int? = null,
+    val maxShutterVolume: Int? = null
 )
 
 /**
@@ -2372,7 +2371,7 @@ internal enum class ImageStitching {
      * Does not perform stitching
      */
     @SerialName("none")
-    NONE,
+    NONE
 }
 
 /**
@@ -2390,7 +2389,7 @@ internal data class CaptureIntervalSupport(
      * maximum interval
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val maxInterval: Int? = null,
+    val maxInterval: Int? = null
 )
 
 /**
@@ -2414,5 +2413,5 @@ internal data class CaptureNumberSupport(
      * maximum value
      */
     @Serializable(with = NumberAsIntSerializer::class)
-    val maxNumber: Int? = null,
+    val maxNumber: Int? = null
 )
