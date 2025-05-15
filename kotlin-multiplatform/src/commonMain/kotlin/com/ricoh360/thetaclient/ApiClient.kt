@@ -6,6 +6,7 @@ import com.ricoh360.thetaclient.websocket.WebSocketHttpClientImpl
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.endpoint
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
@@ -34,14 +35,12 @@ internal object ApiClient {
 
     var httpClient: HttpClient? = null
     fun newHttpClient(): HttpClient {
-        val client = HttpClient(CIO) {
+        val client = HttpClient {
             expectSuccess = true
-            engine {
-                endpoint {
-                    connectTimeout = timeout.connectTimeout
-                    requestTimeout = timeout.requestTimeout
-                    socketTimeout = timeout.socketTimeout
-                }
+            install(HttpTimeout) {
+                requestTimeoutMillis = timeout.requestTimeout
+                connectTimeoutMillis = timeout.connectTimeout
+                socketTimeoutMillis = timeout.socketTimeout
             }
             // See [ContentNegotiation](https://ktor.io/docs/serialization.html)
             install(ContentNegotiation) {
