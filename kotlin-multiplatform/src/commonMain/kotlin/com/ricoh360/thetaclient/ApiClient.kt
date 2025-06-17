@@ -4,7 +4,6 @@ import com.ricoh360.thetaclient.websocket.WebSocketClient
 import com.ricoh360.thetaclient.websocket.WebSocketHttpClient
 import com.ricoh360.thetaclient.websocket.WebSocketHttpClientImpl
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.endpoint
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
